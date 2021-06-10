@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class RouterController {
+    @RequestMapping("/EnterToShow")
+    public String EnterToShow(){
+        return "chart1";
+    }
     @RequestMapping("/EnterToDashBoardv2")
     public String EnterToWelcome(){
         return "calendar";
