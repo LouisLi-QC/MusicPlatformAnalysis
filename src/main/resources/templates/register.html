@@ -5,6 +5,8 @@
     <title></title>
     <link rel="stylesheet" href="css/all.css"/>
     <script src="js/my.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.min.js"></script>
     <script>
         // 1、获得焦点，内容为空，tip默认提示
         // 2、失去焦点，内容为空，tip为隐藏
@@ -28,14 +30,13 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     <!--版心-->
     <div class="container" >
     	<!--京东注册模块-->
-    	<div class="register">
-			<form action="/EnterToCheckInfo" method="post">
+    	<div id="register" class="register">
     		<!--用户名-->
     		<div class="register-box">
     			<!--表单项-->
     			<div class="box default">
-    				<label for="userName">用&nbsp;户&nbsp;名 </label>
-    				<input name="userName" type="text" id="userName" placeholder="您的账户名和登录名" />
+    				<label for="userName">手机号</label>
+    				<input v-model="phoneNumber" type="number" id="userName" placeholder="请输入您的手机号" />
     				<i></i>
     			</div>
     			<!--提示信息-->
@@ -49,7 +50,7 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     			<!--表单项-->
     			<div class="box default">
     				<label for="pwd">设 置 密 码</label>
-    				<input name="password" type="password" id="pwd" placeholder="建议至少两种字符组合" />
+    				<input v-model="password" type="password" id="pwd" placeholder="建议至少两种字符组合" />
     				<i></i>
     			</div>
     			<!--提示信息-->
@@ -63,7 +64,7 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     			<!--表单项-->
     			<div class="box default">
     				<label for="pwd2">确 认 密 码</label>
-    				<input name="confirmPassword" type="password" id="pwd2" placeholder="请再次输入密码" />
+    				<input v-model="confirmPassword" type="password" id="pwd2" placeholder="请再次输入密码" />
     				<i></i>
     			</div>
     			<!--提示信息-->
@@ -77,7 +78,7 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     			<!--表单项-->
     			<div class="Tel default">
     				<label for="mobile">手 机 验 证</label>
-    				<input name="phoneNumber" type="text" id="mobile" placeholder="请输入手机号" />
+    				<input v-model="code" type="number" id="mobile" placeholder="请输入手机号" />
     				<i></i>
     			</div>
 				<button class="getCode"> 获取验证码</button>
@@ -105,10 +106,51 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     			</div>
     		</div>
     		<!--注册-->
-				<button class="completeRegister">注册</button>
-				</form>
+				<button class="completeRegister" @click="register">注册</button>
     	</div>
     	
     </div>
+	<script>
+		var app = new Vue({
+			el:"#register",
+			data:{
+				phoneNumber: "",
+				password: "",
+				confirmPassword: "",
+				code: ""
+			},
+			methods:{
+				register:function () {
+					var that=this;
+					console.log("登陆前")
+					axios.get("http://localhost:8280/EnterToCheckInfo", {
+						params: {
+							phoneNumber: that.phoneNumber,
+							password: that.password,
+							confirmPassword: that.confirmPassword,
+							code: that.code
+						}
+					}).then(
+							function (response) {
+								console.log("注册结果" + response.data)
+								console.log( response)
+								console.log( response.data)
+								if(response.data==0){//0代表没有这个公司
+									alert("该用户名已存在")
+								}
+								else//跳转到公司首页
+								{
+									//window.location.href="/EnterToLogin?id="+response.data
+									alert("注册成功！")
+								}
+							},
+							function (err) {
+								console.log("失败" + err)
+							}
+					)
+				}
+			}
+		})
+	</script>
 </body>
 </html>

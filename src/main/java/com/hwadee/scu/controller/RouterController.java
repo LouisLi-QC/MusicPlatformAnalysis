@@ -13,21 +13,13 @@ public class RouterController {
     @RequestMapping("/EnterToHome")
     public String EnterToHome(String userName, String password) {
         System.out.println(userName);
-        return "../public/index";
+        System.out.println(password);
+        return "1";
     }
 
     @RequestMapping("/EnterToRegister")
     public String EnterToRegister() {
         return "register";
-    }
-
-    @RequestMapping("/EnterToCheckInfo")
-    public String EnterToCheckInfo(String userName, String password, String confirmPassword, String phoneNumber) {
-        System.out.println(userName);
-        System.out.println(password);
-        System.out.println(confirmPassword);
-        System.out.println(phoneNumber);
-        return "login";
     }
 
 //    @RequestMapping("/")
@@ -71,3 +63,4 @@ public class RouterController {
     }
 
 }
+
