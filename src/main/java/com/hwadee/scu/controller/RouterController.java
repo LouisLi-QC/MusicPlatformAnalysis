@@ -3,52 +3,70 @@ package com.hwadee.scu.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class RouterController {
-    @RequestMapping("/EnterToShow")
-    public String EnterToShow(){
-        return "chart1";
+    @RequestMapping("/EnterToHome")
+    public String EnterToHome(String userName, String password) {
+        System.out.println(userName);
+        return "../public/index";
     }
-    @RequestMapping("/EnterToDashBoardv2")
-    public String EnterToWelcome(){
-        return "calendar";
+
+    @RequestMapping("/EnterToRegister")
+    public String EnterToRegister() {
+        return "register";
     }
-    @RequestMapping("/EnterToTalentQuery")
-    public String EnterToTalentQuery(HttpServletRequest request){
-        return "TalentQuery";
+
+    @RequestMapping("/EnterToCheckInfo")
+    public String EnterToCheckInfo(String userName, String password, String confirmPassword, String phoneNumber) {
+        System.out.println(userName);
+        System.out.println(password);
+        System.out.println(confirmPassword);
+        System.out.println(phoneNumber);
+        return "login";
     }
-    @RequestMapping("/EnterToTalentCompare")
-    public String EnterToTalentCompare(){
-        return "TalentCompare";
+
+//    @RequestMapping("/")
+//    public String homePage(){
+//        return "index";
+//    }
+
+    @RequestMapping("/EnterToLogin")
+    public String EnterToLogin() {
+        return "login";
     }
-    @RequestMapping("/EnterToQueryStaff")
-    public String EnterToQueryStaff(HttpServletRequest request){
-        return "QueryStaff";
+
+    @RequestMapping("/EnterToForgotPassword")
+    public String EnterToForgotPassword() {
+        return "examples/forgot-password";
     }
-    @RequestMapping("/EnterToAuditStaff")
-    public String EnterToAuditStaff(){
-        return  "AuditStaff";
+
+    @RequestMapping("/EnterToRecoverPassword")
+    public String EnterToRecoverPassword() {
+        return "examples/recover-password";
     }
 
     @RequestMapping("/EnterToAddEvaluation")
-    public String EnterToAddEvaluation(){
+    public String EnterToAddEvaluation() {
         return "AddEvaluation";
     }
 
     @RequestMapping("/EnterToCompanyInformation")
-    public String EnterToCompanyInformation(){
+    public String EnterToCompanyInformation() {
         return "CompanyInformationOperation";
     }
+
     @RequestMapping("/EnterToCompanyCertification")
-    public String EnterToCompanyCertification(){
+    public String EnterToCompanyCertification() {
         return "CompanyCertification";
     }
+
     @RequestMapping("/EnterToMission")
-    public String EnterToMission(){
+    public String EnterToMission() {
         return "Mission";
     }
 
