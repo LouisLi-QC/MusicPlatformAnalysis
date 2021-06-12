@@ -36,5 +36,27 @@
         <!--<table schema="managment" tableName="worker" domainObjectName="Worker">-->
             <!--<property name="constructorBased" value="true"/>-->
         <!--</table>-->
+        <table schema="musicPlatform" tableName="cd_comments" domainObjectName="CdComments">
+        <property name="constructorBased" value="true"/>
+        </table>
+        <table schema="musicPlatform" tableName="gdsnaqgs_comments" domainObjectName="GdsnaqgsComments">
+            <property name="constructorBased" value="true"/>
+        </table>
+        <table schema="musicPlatform" tableName="music_list" domainObjectName="MusicList">
+            <property name="constructorBased" value="true"/>
+        </table>
+        <table schema="musicPlatform" tableName="playlist_number" domainObjectName="PlaylistNumber">
+            <property name="constructorBased" value="true"/>
+        </table>
+        <table schema="musicPlatform" tableName="qfl_comments" domainObjectName="QflComments">
+            <property name="constructorBased" value="true"/>
+        </table>
+        <table schema="musicPlatform" tableName="xwzydr_comments" domainObjectName="XwzydrComments">
+            <property name="constructorBased" value="true"/>
+        </table>
+
+        <!--<table schema="managment" tableName="worker" domainObjectName="Worker">-->
+        <!--<property name="constructorBased" value="true"/>-->
+        <!--</table>-->
     </context>
 </generatorConfiguration>
