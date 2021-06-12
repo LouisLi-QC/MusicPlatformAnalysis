@@ -8,13 +8,14 @@ spring:
   datasource:
      url: jdbc:mysql://localhost:3306/musicplatform?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
      username: root
-     password: root
+     password: 991116ta
      driver-class-name: com.mysql.jdbc.Driver
   devtools:
     restart:
-      enabled: true
+      enabled: true  #设置开启热部署
   freemarker:
-    cache: false
+    cache: false    #页面不加载缓存，修改即时生效
+
 
 logging:
   level:
