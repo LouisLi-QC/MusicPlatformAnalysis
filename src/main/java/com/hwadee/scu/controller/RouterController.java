@@ -3,11 +3,6 @@ package com.hwadee.scu.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 public class RouterController {
     @RequestMapping("/EnterToHome")
@@ -41,6 +36,21 @@ public class RouterController {
     public String EnterToRecoverPassword() {
         return "examples/recover-password";
     }
+
+    @RequestMapping("/EnterToShow")
+    public String EnterToShow(){ return "songAndsinger";}
+
+    @RequestMapping("/EnterToAreaMap")
+    public String EnterToAreaMap(){ return "areaMap";}
+
+    @RequestMapping("/EnterToCommentChart")
+    public String EnterToCommentChart(){ return "commentChart";}
+
+    @RequestMapping("/EnterToSongAndSinger")
+    public String EnterToSongAndSinger(){ return "songAndsinger";}
+
+    @RequestMapping("/EnterToUserInfo")
+    public String EnterToUserInfo(){ return "userInformation";}
 
     @RequestMapping("/EnterToAddEvaluation")
     public String EnterToAddEvaluation() {
