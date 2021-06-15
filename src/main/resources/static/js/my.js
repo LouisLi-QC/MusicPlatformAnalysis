@@ -4,7 +4,7 @@ function $(id) {
 // 中文、字母、数字、_ - 4-20
 
 var regs = {
-	userNameReg: /^(([\u4e00-\u9fa5])|[a-zA-Z0-9-_]){4,20}$/,
+	// userNameReg: /^(([\u4e00-\u9fa5])|[a-zA-Z0-9-_]){4,20}$/,
 	pwdReg: /^.{6,20}$/,
 	numReg: /\d/,
 	strReg: /[a-zA-Z]/,
@@ -54,7 +54,7 @@ window.onload = function() {
 		if(value=="") {
 			box.className = "box error";
 			tip.className = "tip error";
-			span.innerHTML = "用户名不能为空";
+			span.innerHTML = "电话号码不能为空";
 			return false;
 		} else if(regs.userNameReg.test(value)) {
 			box.className = "box right";

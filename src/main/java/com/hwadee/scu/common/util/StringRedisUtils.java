@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * create by: fanyang
  * description: 封装好的redis工具类一，使用springboot集成的StringRedisTemplate模板
@@ -31,7 +33,7 @@ public class StringRedisUtils {
             stringRedisTemplate.opsForValue().set(key,value);
             result = true;
         } catch (Exception e) {
-            System.out.println("RedisUtil写入redis缓存失败！错误信息为：" + e.getMessage());
+            System.out.println("StringRedisUtils写入redis失败！错误信息为：" + e.getMessage());
         }
         return result;
     }
@@ -47,8 +49,19 @@ public class StringRedisUtils {
         try {
             result=stringRedisTemplate.opsForValue().get(key);
         } catch (Exception e) {
-            System.out.println("RedisUtil读取redis缓存失败！错误信息为：" + e.getMessage());        }
+            System.out.println("StringRedisUtils读取redis失败！错误信息为：" + e.getMessage());        }
         return result;
+    }
+
+    public boolean expire(String key,String value,int time){
+        try {
+            stringRedisTemplate.opsForValue().set(key,value,time, TimeUnit.SECONDS);
+            return true;
+        }catch (Exception e)
+        {
+            System.out.println("StringRedisUtils设置过期时间失败！错误信息为：" + e.getMessage());
+        }
+        return false;
     }
 
 

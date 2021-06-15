@@ -74,7 +74,7 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 				login:function () {
 					var that=this;
 					console.log("登陆前")
-					axios.get("http://localhost:8280/EnterToHome", {
+					axios.get("http://localhost:8280/EnterToCheckInfo", {
 						params: {
 							userName: that.userName,
 							password: that.password,

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="css/all.css"/>
-    <script src="js/my.js"></script>
+    <!--<script src="js/my.js"></script>-->
+	<!--不用jquery-->
 	<script src="js/vue.js"></script>
 	<script src="js/axios.min.js"></script>
     <script>
@@ -17,6 +18,45 @@
         // 4、密码要进行安全等级检测，含数字、字母、特殊字符为强，两种为中，一种为弱
         // 5、确认密码失去焦点的时候就要验证是否一致
     </script>
+	<style>
+		.get-code {
+			float:right;
+
+		}
+		.code-btn {
+			color:#002b;
+			font-size:12px;
+			border:1px solid #002b;
+			border-radius:5px;
+			padding:5px;
+			box-sizing:border-box;
+			cursor:pointer;
+			height:100%;
+
+		}
+		.code-btn_1 {
+			color: #999;
+			font-size:12px;
+			border:1px solid #999;
+			border-radius:5px;
+			padding:5px;
+			box-sizing:border-box;
+			height:100%;
+
+		}
+		.register .getCode1{
+			width: 26%;
+			height: 100%;
+			font:bold 10px/30px "宋体";
+			color: white;
+			background-color: darkred;
+			outline-color: white;
+			margin-bottom: 20px;
+			float: left;
+			float: top;
+			float: bottom;
+		}
+	</style>
 </head>
 <body background="https://h2.ioliu.cn/bing/ButtermereSunset_ZH-CN9706111376_1920x1080.jpg?imageslim"
 style="background-repeat:no-repeat;background-size:100% 100%;background-attachment: fixed;">
@@ -36,7 +76,9 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     			<!--表单项-->
     			<div class="box default">
     				<label for="userName">手机号</label>
-    				<input v-model="phoneNumber" type="number" id="userName" placeholder="请输入您的手机号" />
+    				<input v-model="Email" type="text" id="userName" placeholder="请输入您的手机号" @blur="checkEmail" @input="checkEmail"/>
+					<label v-if="flagName" style="margin-bottom: 3px;color: green">邮箱不正确</label>
+
     				<i></i>
     			</div>
     			<!--提示信息-->
@@ -49,7 +91,7 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     		<div class="register-box">
     			<!--表单项-->
     			<div class="box default">
-    				<label for="pwd">设 置 密 码</label>
+    				<label for="pwd">设置密码</label>
     				<input v-model="password" type="password" id="pwd" placeholder="建议至少两种字符组合" />
     				<i></i>
     			</div>
@@ -63,8 +105,9 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     		<div class="register-box">
     			<!--表单项-->
     			<div class="box default">
-    				<label for="pwd2">确 认 密 码</label>
-    				<input v-model="confirmPassword" type="password" id="pwd2" placeholder="请再次输入密码" />
+    				<label for="pwd2">确认密码</label>
+    				<input v-model="confirmPassword" type="password" id="pwd2" placeholder="请再次输入密码" @blur="checkPwd" @input="checkPwd"/>
+					<label v-if="flagPwd" style="margin-bottom: 3px;color: green">两次密码不一致</label>
     				<i></i>
     			</div>
     			<!--提示信息-->
@@ -77,13 +120,17 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     		<div class="register-box">
     			<!--表单项-->
     			<div class="Tel default">
-    				<label for="mobile">手 机 验 证</label>
-    				<input v-model="code" type="number" id="mobile" placeholder="请输入手机号" />
+    				<label for="mobile">验证码</label>
+    				<input v-model="user_code" type="text" id="mobile" placeholder="请输入验证码" />
     				<i></i>
     			</div>
-				<button class="getCode"> 获取验证码</button>
+				<button class="getCode"  @click="sendCode" v-if="show">获取验证码</button>
     			<!--提示信息-->
-    			<div class="tip">
+				<button class="getCode1"   v-else>{{code_time}}秒后重新获取</button>
+
+				<!--<span class="code-btn" @click="sendCode"  v-if="show" >获取验证码</span>-->
+				<!--<span class="code-btn_1" v-else >{{code_time}}s重新获取</span>-->
+				<div class="tip">
     				<i></i>
     				<span></span>
     			</div>
@@ -114,21 +161,89 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 		var app = new Vue({
 			el:"#register",
 			data:{
-				phoneNumber: "",
-				password: "",
-				confirmPassword: "",
-				code: ""
+				Email: "",//邮箱，也是用户id
+				password: "",//密码
+				confirmPassword: "",//确认密码
+				code: "",//验证码，后台生成的验证码
+				regMobile:"/^1(3|4|5|6|7|8|9)d{9}$/",//正则匹配手机号
+				flagName:false,//手机号码是否正确，
+				flagPwd:false,//两次密码是否一致
+				show:true,//获取验证码
+				code_time:60,//验证码倒计时
+				time_count:"",
+				user_code:""//用户输入的验证码
 			},
 			methods:{
+				time:function (){//验证码倒计时
+					this.code_time=this.code_time-1;
+					// console.log(this.code_time);
+					if(this.code_time==0){
+						clearInterval(this.time_count);
+						this.time_count = null;
+						this.code_time=5;
+						this.show=!this.show;
+					}
+				},
+				checkEmail:function() {//正则检验手机号是否正确
+					const reg = /^1([38]\d|5[0-35-9]|7[3678])\d{8}$/;
+					const reg2=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+					if (this.Email == '' || !reg2.test(this.Email)) {
+						console.log("邮箱不正确")
+						this.flagName=true
+					}
+					else{
+						this.flagName=false
+					}
+				},
+				checkPwd:function(){//检验两次密码是否一致
+					if(this.password==this.confirmPassword){
+						this.flagPwd=false
+					}
+					else{
+						this.flagPwd=true
+					}
+
+				},
+				sendCode:function(){
+					var that=this
+
+					if(that.Email=="")
+					{
+						alert("请输入手机号后再发送验证码")
+					}
+					else
+					{
+						that.show=false
+						console.log("发送了验证码")
+						this.time_count = setInterval(this.time,1000);
+						var code = Math.floor(Math.random()*(9999-1000))+1000;
+						that.code=code;
+						console.log("code"+that.code);
+						axios.get("http://localhost:8280/login/sendCode",{
+							params: {
+								Email:that.Email,
+								code:that.code//用户手动输入的验证码
+							}
+						}).then(
+								function (response) {
+									console.log("发送code成功")
+									console.log(response)
+								},
+								function (err) {
+									console.log("发送code失败")
+									console.log( err)
+								}
+						)
+					}
+				},
 				register:function () {
 					var that=this;
-					console.log("登陆前")
-					axios.get("http://localhost:8280/EnterToCheckInfo", {
+					axios.get("/login/register", {
 						params: {
-							phoneNumber: that.phoneNumber,
+							Email: that.Email,
 							password: that.password,
-							confirmPassword: that.confirmPassword,
-							code: that.code
+							// confirmPassword: that.confirmPassword,
+							userCode: that.user_code
 						}
 					}).then(
 							function (response) {

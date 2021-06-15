@@ -12,7 +12,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/musicPlatform?useUnicode=yes&amp;characterEncoding=UTF-8&amp;useSSL=false"
                         userId="root"
-                        password="991116ta">
+                        password="root">
             <property name="useInformationSchema" value="true"/>
         </jdbcConnection>
 
@@ -52,6 +52,9 @@
             <property name="constructorBased" value="true"/>
         </table>
         <table schema="musicPlatform" tableName="xwzydr_comments" domainObjectName="XwzydrComments">
+            <property name="constructorBased" value="true"/>
+        </table>
+        <table schema="musicPlatform" tableName="user_information" domainObjectName="userInformation">
             <property name="constructorBased" value="true"/>
         </table>
 
