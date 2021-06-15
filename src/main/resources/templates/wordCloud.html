@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="plugins/uplot/uPlot.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+<!--    //    echarts CDN-->
+    <script src='js/echarts.min.js'></script>
+<!--    //    下载wordcloud.js文件-->
+<!--    //    https://github.com/ecomfe/echarts-wordcloud-->
+    <script src='js/worldcloud.js'></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -202,9 +207,9 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="index.html" class="nav-link">
+                                <a href="../../index.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>首页</p>
+                                    <p>Dashboard v1</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -230,66 +235,66 @@
                             </p>
                         </a>
                     </li>
-<!--                    <li class="nav-item">-->
-<!--                        <a href="#" class="nav-link">-->
-<!--                            <i class="nav-icon fas fa-copy"></i>-->
-<!--                            <p>-->
-<!--                                Layout Options-->
-<!--                                <i class="fas fa-angle-left right"></i>-->
-<!--                                <span class="badge badge-info right">6</span>-->
-<!--                            </p>-->
-<!--                        </a>-->
-<!--                        <ul class="nav nav-treeview">-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="../layout/top-nav.html" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>Top Navigation</p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="../layout/top-nav-sidebar.html" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>Top Navigation + Sidebar</p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="../layout/boxed.html" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>Boxed</p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="../layout/fixed-sidebar.html" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>Fixed Sidebar</p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="../layout/fixed-sidebar-custom.html" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>Fixed Sidebar <small>+ Custom Area</small></p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="../layout/fixed-topnav.html" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>Fixed Navbar</p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="../layout/fixed-footer.html" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>Fixed Footer</p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="../layout/collapsed-sidebar.html" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>Collapsed Sidebar</p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </li>-->
+                    <!--                    <li class="nav-item">-->
+                    <!--                        <a href="#" class="nav-link">-->
+                    <!--                            <i class="nav-icon fas fa-copy"></i>-->
+                    <!--                            <p>-->
+                    <!--                                Layout Options-->
+                    <!--                                <i class="fas fa-angle-left right"></i>-->
+                    <!--                                <span class="badge badge-info right">6</span>-->
+                    <!--                            </p>-->
+                    <!--                        </a>-->
+                    <!--                        <ul class="nav nav-treeview">-->
+                    <!--                            <li class="nav-item">-->
+                    <!--                                <a href="../layout/top-nav.html" class="nav-link">-->
+                    <!--                                    <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                    <p>Top Navigation</p>-->
+                    <!--                                </a>-->
+                    <!--                            </li>-->
+                    <!--                            <li class="nav-item">-->
+                    <!--                                <a href="../layout/top-nav-sidebar.html" class="nav-link">-->
+                    <!--                                    <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                    <p>Top Navigation + Sidebar</p>-->
+                    <!--                                </a>-->
+                    <!--                            </li>-->
+                    <!--                            <li class="nav-item">-->
+                    <!--                                <a href="../layout/boxed.html" class="nav-link">-->
+                    <!--                                    <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                    <p>Boxed</p>-->
+                    <!--                                </a>-->
+                    <!--                            </li>-->
+                    <!--                            <li class="nav-item">-->
+                    <!--                                <a href="../layout/fixed-sidebar.html" class="nav-link">-->
+                    <!--                                    <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                    <p>Fixed Sidebar</p>-->
+                    <!--                                </a>-->
+                    <!--                            </li>-->
+                    <!--                            <li class="nav-item">-->
+                    <!--                                <a href="../layout/fixed-sidebar-custom.html" class="nav-link">-->
+                    <!--                                    <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                    <p>Fixed Sidebar <small>+ Custom Area</small></p>-->
+                    <!--                                </a>-->
+                    <!--                            </li>-->
+                    <!--                            <li class="nav-item">-->
+                    <!--                                <a href="../layout/fixed-topnav.html" class="nav-link">-->
+                    <!--                                    <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                    <p>Fixed Navbar</p>-->
+                    <!--                                </a>-->
+                    <!--                            </li>-->
+                    <!--                            <li class="nav-item">-->
+                    <!--                                <a href="../layout/fixed-footer.html" class="nav-link">-->
+                    <!--                                    <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                    <p>Fixed Footer</p>-->
+                    <!--                                </a>-->
+                    <!--                            </li>-->
+                    <!--                            <li class="nav-item">-->
+                    <!--                                <a href="../layout/collapsed-sidebar.html" class="nav-link">-->
+                    <!--                                    <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                    <p>Collapsed Sidebar</p>-->
+                    <!--                                </a>-->
+                    <!--                            </li>-->
+                    <!--                        </ul>-->
+                    <!--                    </li>-->
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas fa-chart-pie"></i>
@@ -300,7 +305,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/EnterToAreaMap" class="nav-link active">
+                                <a href="/EnterToAreaMap" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>用户地区分布</p>
                                 </a>
@@ -330,7 +335,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/EnterToWordCloud" class="nav-link">
+                                <a href="/EnterToWordCloud" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>词云</p>
                                 </a>
@@ -868,7 +873,7 @@
 
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">用户地区分布情况</h3>
+                        <h3 class="card-title">广东爱情故事</h3>
 
                         <div class="card-tools">
 
@@ -876,13 +881,62 @@
                     </div>
                     <div class="card-body">
                         <div class="chart">
-                            <div id="area" style="min-height: 800px; height: 800px; max-height: 800px; max-width: 100%;"></div>
+                            <div id="guangDong"  style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></div>
                         </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
 
+                <!-- LINE CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">成都</h3>
+
+                        <div class="card-tools">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <div id="chengdu"  style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <!-- LINE CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">像我这样的人</h3>
+
+                        <div class="card-tools">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <div id="peopleLikeMe"  style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <!-- LINE CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">起风了</h3>
+
+                        <div class="card-tools">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <div id="qiFeng"  style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
                 <!-- /.card -->
 
             </div><!-- /.container-fluid -->
@@ -941,7 +995,7 @@
         //--------------
 
         const optsAreaChart = {
-            ... getSize('area'),
+            ... getSize('guangDong'),
             scales: {
                 x: {
                     time: false,
@@ -963,100 +1017,98 @@
             ],
         };
 
-        let lineChart = new uPlot(optsAreaChart, data, document.getElementById('area'));
+        let lineChart = new uPlot(optsAreaChart, data, document.getElementById('guangDong'));
+
+        const optsLineChart = {
+            ... getSize('chengdu'),
+            scales: {
+                x: {
+                    time: false,
+                },
+                y: {
+                    range: [0, 100],
+                },
+            },
+            series: [
+                {},
+                {
+                    fill: 'transparent',
+                    width: 5,
+                    stroke: 'rgba(60,141,188,1)',
+                },
+                {
+                    stroke: '#c1c7d1',
+                    width: 5,
+                    fill: 'transparent',
+                },
+            ],
+        };
+
+        let barChart = new uPlot(optsLineChart, data, document.getElementById('chengdu'));
+
+        const optsSongChart1 = {
+            ... getSize('peopleLikeMe'),
+            scales: {
+                x: {
+                    time: false,
+                },
+                y: {
+                    range: [0, 100],
+                },
+            },
+            series: [
+                {},
+                {
+                    fill: 'transparent',
+                    width: 5,
+                    stroke: 'rgba(60,141,188,1)',
+                },
+                {
+                    stroke: '#c1c7d1',
+                    width: 5,
+                    fill: 'transparent',
+                },
+            ],
+        };
+
+        let songChart1 = new uPlot(optsSongChart1, data, document.getElementById('peopleLikeMe'));
+
+        const optsSongChart2 = {
+            ... getSize('qiFeng'),
+            scales: {
+                x: {
+                    time: false,
+                },
+                y: {
+                    range: [0, 100],
+                },
+            },
+            series: [
+                {},
+                {
+                    fill: 'transparent',
+                    width: 5,
+                    stroke: 'rgba(60,141,188,1)',
+                },
+                {
+                    stroke: '#c1c7d1',
+                    width: 5,
+                    fill: 'transparent',
+                },
+            ],
+        };
+
+        let songChart2 = new uPlot(optsSongChart2, data, document.getElementById('qiFeng'));
 
 
         window.addEventListener("resize", e => {
-            lineChart.setSize(getSize('area'));
-
+            lineChart.setSize(getSize('guangDong'));
+            barChart.setSize(getSize('chengdu'));
+            songChart1.setSize(getSize('peopleLikeMe'));
+            songChart2.setSize(getSize('qiFeng'));
         });
     })
 </script>
-<script src="js/echarts.min.js"></script>
-<script src="js/china.js"></script>
-<script type="text/javascript">
-    //初始化echarts实例
-    var myChart = echarts.init(document.getElementById('area'));
-    // 全国省份列表
-    function randomData() {
-        return Math.round(Math.random()*40);
-    }
-    var values = {bj:'1', sh:'2', hb:'3', yunnan:'4'};
-
-    var dataMap =[
-        {name: '北京',value: values.bj },{name: '天津',value: randomData() },
-        {name: '上海',value: values.sh},{name: '重庆',value: randomData() },
-        {name: '河北',value: values.hb},{name: '河南',value: randomData() },
-        {name: '云南',value: values.yunnan },{name: '辽宁',value: randomData() },
-        {name: '黑龙江',value: randomData() },{name: '湖南',value: randomData() },
-        {name: '安徽',value: randomData() },{name: '山东',value: randomData() },
-        {name: '新疆',value: randomData() },{name: '江苏',value: randomData() },
-        {name: '浙江',value: randomData() },{name: '江西',value: randomData() },
-        {name: '湖北',value: randomData() },{name: '广西',value: randomData() },
-        {name: '甘肃',value: randomData() },{name: '山西',value: randomData() },
-        {name: '内蒙古',value: randomData() },{name: '陕西',value: randomData() },
-        {name: '吉林',value: randomData() },{name: '福建',value: randomData() },
-        {name: '贵州',value: randomData() },{name: '广东',value: randomData() },
-        {name: '青海',value: randomData() },{name: '西藏',value: randomData() },
-        {name: '四川',value: randomData() },{name: '宁夏',value: randomData() },
-        {name: '海南',value: randomData() },{name: '台湾',value: randomData() },
-        {name: '香港',value: randomData() },{name: '澳门',value: randomData() },{name: '南海诸岛',value: randomData() }
-    ];
-    // 需要在页面上直接标记出来的城市
-
-    var specialMap = [];
-    // 对dataMap进行处理，使其可以直接在页面上展示
-    for (var i = 0; i < specialMap.length; i++) {
-        for (var j = 0; j < dataMap.length; j++) {
-            if (specialMap[i] == dataMap[j].name) {
-                dataMap[j].selected = true;
-                break;
-            }
-        }
-    }
-
-    var option = {
-        tooltip: {
-            formatter: function (params) {
-                var info = '<p style="font-size:18px">' + params.name + params.value +'</p><p style="font-size:14px"></p>'
-                return info;
-            },
-            backgroundColor: "rgba(255,219,67,0.93)",//提示标签背景颜色
-            textStyle: { color: "#ff4130" } //提示标签字体颜色
-        },
-//左侧小导航图标
-        visualMap: {
-            show : true,
-            x: 'left',
-            y: 'center',
-            splitList: [
-                {start: 31, end: 40},{start: 25, end: 30},
-                {start: 19, end: 24},{start: 13, end: 18},
-                {start: 7, end: 12},{start: 1, end:6},
-            ],
-            color: ['#06f5e5', '#0982ea', '#6eef10','#e2c50b', '#e66904', '#ea080d']
-        },
-        series: [
-            {
-                name: '中国',
-                type: 'map',
-                mapType: 'china',
-
-                label: {
-                    normal: {
-                        show: true,//显示省份标签
-                    },
-                    emphasis: {
-                        show: true,//对应的鼠标悬浮效果
-                    }
-                },
-
-                data: dataMap
-            }
-        ]
-    };
-    //使用制定的配置项和数据显示图表
-    myChart.setOption(option);
-</script>
+<script src="js/word.js"></script>
 </body>
 </html>

@@ -323,6 +323,18 @@
                                     <p>用户情况</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/EnterToPlayList" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>歌单</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/EnterToWordCloud" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>词云</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -1017,45 +1029,48 @@
 </script>
 <script src="js/echarts.min.js"></script>
 <script>
-    var myChart = echarts.init(document.getElementById('songChart'), 'dark');
-    var option;
-    var song = {first:{name:'像我这样的人', value:300}, second:{name:'成都', value:150}};
-    option = {
+    var songChart = echarts.init(document.getElementById('songChart'), 'dark');
+    var optionSong;
+    var songSinger = {
+        song:{first:{name:'像我这样的人', value:300}, second:{name:'成都', value:150}},
+        singer:{first:{name:'毛不易', value:300}, second:{name:'成都', value:150}}};
+    optionSong = {
         xAxis: {
             type: 'category',
-            data: [song.first.name, song.second.name, 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Fri', 'Sat', 'Sun']
+            data: [songSinger.song.first.name, songSinger.song.second.name, 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Fri', 'Sat', 'Sun']
         },
         yAxis: {
             type: 'value'
         },
         series: [{
-            data: [song.first.value, song.second.value, 150, 80, 70, 110, 130, 80,143,154],
+            data: [songSinger.song.first.value, songSinger.song.second.value, 150, 80, 70, 110, 130, 80,143,154],
             type: 'bar'
         }]
     };
 
-    option && myChart.setOption(option);
-</script>
-<script>
+    optionSong && songChart.setOption(optionSong);
+
+    //分界线
+
     var chartDom = document.getElementById('singerChart');
-    var myChart = echarts.init(chartDom, 'dark');
-    var option;
+    var singerChart = echarts.init(chartDom, 'dark');
+    var optionSinger;
 
-    option = {
+    optionSinger = {
         xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: [songSinger.singer.first.name, songSinger.singer.second.name, 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
         yAxis: {
             type: 'value'
         },
         series: [{
-            data: [120, 200, 150, 80, 70, 110, 130],
+            data: [songSinger.singer.first.value, songSinger.singer.second.value, 120, 200, 150, 80, 70, 110, 130],
             type: 'bar'
         }]
     };
 
-    option && myChart.setOption(option);
+    optionSinger && singerChart.setOption(optionSinger);
 </script>
 </body>
 </html>

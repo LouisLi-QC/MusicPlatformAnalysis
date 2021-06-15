@@ -42,7 +42,7 @@ public class RouterController {
     }
 
     @RequestMapping("/EnterToShow")
-    public String EnterToShow(){ return "songAndsinger";}
+    public String EnterToShow(){ return "wordCloud";}
 
     @RequestMapping("/EnterToAreaMap")
     public String EnterToAreaMap(){ return "areaMap";}
@@ -55,6 +55,12 @@ public class RouterController {
 
     @RequestMapping("/EnterToUserInfo")
     public String EnterToUserInfo(){ return "userInformation";}
+
+    @RequestMapping("/EnterToPlayList")
+    public String EnterToPlayList(){ return "playList";}
+
+    @RequestMapping("/EnterToWordCloud")
+    public String EnterToWordCloud(){ return "wordCloud";}
 
     @RequestMapping("/EnterToAddEvaluation")
     public String EnterToAddEvaluation() {

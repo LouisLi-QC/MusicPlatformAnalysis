@@ -4,6 +4,7 @@ import com.hwadee.scu.common.domain.GdsnaqgsComNum;
 import com.hwadee.scu.common.domain.GdsnaqgsComNumExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface GdsnaqgsComNumMapper {
     /**
@@ -93,4 +94,7 @@ public interface GdsnaqgsComNumMapper {
      * @mbg.generated Tue Jun 15 18:35:16 CST 2021
      */
     int updateByPrimaryKey(GdsnaqgsComNum record);
+
+    @Select("select *from gdsnaqgs_com_num")
+    List<GdsnaqgsComNum> selectAll();
 }
