@@ -33,9 +33,23 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!--<table schema="musicPlatform" tableName="worker" domainObjectName="Worker">-->
-            <!--<property name="constructorBased" value="true"/>-->
-            <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="select uuid_short()" identity="false"/>&ndash;&gt;-->
-        <!--</table>-->
+
+        <table schema="musicPlatform" tableName="cd_com_num" domainObjectName="CdComNum">
+            <property name="constructorBased" value="true"/>
+            <!--<generatedKey column="id" sqlStatement="select uuid_short()" identity="false"/>-->
+        </table>
+        <table schema="musicPlatform" tableName="gdsnaqgs_com_num" domainObjectName="GdsnaqgsComNum">
+            <property name="constructorBased" value="true"/>
+            <!--<generatedKey column="id" sqlStatement="select uuid_short()" identity="false"/>-->
+        </table>
+        <table schema="musicPlatform" tableName="qfi_com_num" domainObjectName="QflComNum">
+            <property name="constructorBased" value="true"/>
+            <!--<generatedKey column="id" sqlStatement="select uuid_short()" identity="false"/>-->
+        </table>
+        <table schema="musicPlatform" tableName="xwzydr_com_num" domainObjectName="XwzydrComNum">
+            <property name="constructorBased" value="true"/>
+            <!--<generatedKey column="id" sqlStatement="select uuid_short()" identity="false"/>-->
+        </table>
+
     </context>
 </generatorConfiguration>
