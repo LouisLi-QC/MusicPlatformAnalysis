@@ -12,6 +12,8 @@ import lombok.Data;
 public class Response {
     // 是否成功
     private Boolean flag;
+    //状态码
+    private int err_code;
     // 返回信息
     private String message;
     // 返回数据
@@ -34,5 +36,13 @@ public class Response {
         this.flag = flag;
         this.message = message;
         this.data = data;
+    }
+    /**
+     * 增删改使用,携带状态码
+     */
+    public Response(Boolean flag,int err_code, String message) {
+        this.flag = flag;
+        this.err_code=err_code;
+        this.message = message;
     }
 }

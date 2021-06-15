@@ -24,6 +24,7 @@
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
+
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources/mybatis">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
@@ -32,34 +33,9 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!--以下是表的对应关系-->
-        <!--<table schema="managment" tableName="worker" domainObjectName="Worker">-->
+        <!--<table schema="musicPlatform" tableName="worker" domainObjectName="Worker">-->
             <!--<property name="constructorBased" value="true"/>-->
-        <!--</table>-->
-        <table schema="musicPlatform" tableName="cd_comments" domainObjectName="CdComments">
-        <property name="constructorBased" value="true"/>
-        </table>
-        <table schema="musicPlatform" tableName="gdsnaqgs_comments" domainObjectName="GdsnaqgsComments">
-            <property name="constructorBased" value="true"/>
-        </table>
-        <table schema="musicPlatform" tableName="music_list" domainObjectName="MusicList">
-            <property name="constructorBased" value="true"/>
-        </table>
-        <table schema="musicPlatform" tableName="playlist_number" domainObjectName="PlaylistNumber">
-            <property name="constructorBased" value="true"/>
-        </table>
-        <table schema="musicPlatform" tableName="qfl_comments" domainObjectName="QflComments">
-            <property name="constructorBased" value="true"/>
-        </table>
-        <table schema="musicPlatform" tableName="xwzydr_comments" domainObjectName="XwzydrComments">
-            <property name="constructorBased" value="true"/>
-        </table>
-        <table schema="musicPlatform" tableName="user_information" domainObjectName="userInformation">
-            <property name="constructorBased" value="true"/>
-        </table>
-
-        <!--<table schema="managment" tableName="worker" domainObjectName="Worker">-->
-        <!--<property name="constructorBased" value="true"/>-->
+            <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="select uuid_short()" identity="false"/>&ndash;&gt;-->
         <!--</table>-->
     </context>
 </generatorConfiguration>

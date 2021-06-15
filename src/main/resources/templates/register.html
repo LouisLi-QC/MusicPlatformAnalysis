@@ -153,7 +153,7 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     			</div>
     		</div>
     		<!--注册-->
-				<button class="completeRegister" @click="register">注册</button>
+				<button class="completeRegister" @click="registerAdmin">注册</button>
     	</div>
     	
     </div>
@@ -215,11 +215,11 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 					{
 						that.show=false
 						console.log("发送了验证码")
-						this.time_count = setInterval(this.time,1000);
-						var code = Math.floor(Math.random()*(9999-1000))+1000;
+						this.time_count = setInterval(this.time,1000);//时间减一
+						var code = Math.floor(Math.random()*(9999-1000))+1000;//随机生成的验证码
 						that.code=code;
 						console.log("code"+that.code);
-						axios.get("http://localhost:8280/login/sendCode",{
+						axios.get("/admin/sendCode",{
 							params: {
 								Email:that.Email,
 								code:that.code//用户手动输入的验证码
@@ -236,28 +236,25 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 						)
 					}
 				},
-				register:function () {
+				registerAdmin:function () {
 					var that=this;
-					axios.get("/login/register", {
+					console.log(that.Email)
+					console.log(that.password)
+					console.log(that.user_code)
+
+					axios.get("/admin/register", {
 						params: {
 							Email: that.Email,
 							password: that.password,
-							// confirmPassword: that.confirmPassword,
 							userCode: that.user_code
 						}
 					}).then(
 							function (response) {
-								console.log("注册结果" + response.data)
+								console.log("注册结果")
 								console.log( response)
-								console.log( response.data)
-								if(response.data==0){//0代表没有这个公司
-									alert("该用户名已存在")
-								}
-								else//跳转到公司首页
-								{
-									//window.location.href="/EnterToLogin?id="+response.data
-									alert("注册成功！")
-								}
+								var err_code=response.data.err_code;//状态码
+								var message=response.data.message;//提示信息
+								alert(message);
 							},
 							function (err) {
 								console.log("失败" + err)

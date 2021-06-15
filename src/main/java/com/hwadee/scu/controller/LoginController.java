@@ -1,20 +1,18 @@
 package com.hwadee.scu.controller;
 
-import com.hwadee.scu.common.util.Email;
+import com.hwadee.scu.common.util.MD5;
 import com.hwadee.scu.common.util.Response;
 import com.hwadee.scu.common.util.StringRedisUtils;
 import com.hwadee.scu.service.EmailService;
-import com.sun.org.glassfish.external.statistics.annotations.Reset;
+import com.hwadee.scu.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
+import javax.annotation.Resource;
 
 /**
  * create by: fanyang
@@ -23,7 +21,7 @@ import java.util.Date;
  */
 @RestController
 @CrossOrigin
-@RequestMapping("/login")
+@RequestMapping("/admin")
 public class LoginController {
     @Autowired
     private StringRedisUtils stringRedisUtils;
@@ -31,6 +29,10 @@ public class LoginController {
     static JavaMailSender javaMailSender;
     @Autowired
     EmailService emailService;
+    @Autowired
+    MD5 md5;
+    @Autowired
+    AdminService loginService;
     /**
      * create by: fanyang
      * description:
@@ -42,41 +44,53 @@ public class LoginController {
     public Response sendCode(String Email,String code){
         System.out.println(Email);
         System.out.println(code);
-       // boolean flag=stringRedisUtils.expire(Email,code,300);//将验证码写入redis
-//        Email email=new Email();
-//        email.sendEmail("fy1763089574@qq.com");//发送验证码
-        // 构建一个邮件对象
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        // 设置邮件主题
-//        message.setSubject("这是一封测试邮件");
-//        // 设置邮件发送者，这个跟application.yml中设置的要一致
-//        message.setFrom("1763089574@qq.com");
-//        // 设置邮件接收者，可以有多个接收者，中间用逗号隔开，以下类似
-//        // message.setTo("10*****16@qq.com","12****32*qq.com");
-//        message.setTo(Email);
-//
-//        // 设置邮件发送日期
-//        message.setSentDate(new Date());
-//        // 设置邮件的正文
-//        message.setText("这是测试邮件的正文");
-//        // 发送邮件
-//        javaMailSender.send(message);
-        boolean flag=emailService.sendEmail(Email);
-
-
-        if(flag){
+        boolean sendFlag=emailService.sendEmail(Email,code);//发送验证码
+        boolean expireFlag=stringRedisUtils.expire(Email,code,15*60);//将验证码存入redis并设置过期时间
+        if(sendFlag&&expireFlag){
             return new Response(true,"验证码发送成功");
         }
         return new Response(false,"验证码发送失败");
     }
 
+    /**
+     * create by: fanyang
+     * description: 用户注册
+     * params:Email为邮箱，password为密码，userCode为用户输入的验证码
+     * return:410代表验证码过期，200代码注册成功
+     * create time:
+     */
     @RequestMapping("/register")
-    public Response register(String Email,String password,String userCode){
+    public Response register(String Email, String password, String userCode){
+        String pwd=md5.getMD5(password);//加密后的密码
+        String realCode=stringRedisUtils.get(Email);//从redis中读取验证码
+        //如果用户输入的验证码和系统生成的验证码一致，则成功注册
+        if(realCode==null){
+            return new Response(false,410,"验证码已过期");
+        }
+        if(realCode.equals(userCode)){
+            boolean flag=loginService.register(Email,pwd);
+            return flag?new Response(true,200,"注册成功"):new Response(false,412,"未知的错误，请重试");
+        }
+
+        return new Response(false,411,"验证码错误，注册失败");
+    }
+
+    /**
+     * create by: fanyang
+     * description:
+     * params:
+     * return:
+     * create time:
+     */
+    @RequestMapping("/login")
+    public Response login(String Email,String password){
         System.out.println(Email);
         System.out.println(password);
-        System.out.println(userCode);
-        return new Response(false,"注册成功");
+        String pwd=md5.getMD5(password);//加密后的密码
+        boolean loginFlag=loginService.login(Email,pwd);
+        return loginFlag?new Response(true,200,"登陆成功"):new Response(false,411,"密码错误");
     }
+
 
 
 
