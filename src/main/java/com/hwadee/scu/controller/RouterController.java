@@ -11,6 +11,10 @@ public class RouterController {
         System.out.println(password);
         return "1";
     }
+    @RequestMapping("/EnterToAdmin")
+    public String EnterToAdmin(){
+        return "admin";
+    }
 
     @RequestMapping("/EnterToRegister")
     public String EnterToRegister() {

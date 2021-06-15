@@ -36,7 +36,7 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     			<!--表单项-->
     			<div class="box default">
     				<label for="userName">用&nbsp;户&nbsp;名 </label>
-    				<input v-model="userName" type="text" id="userName" placeholder="请输入您的账户或登录名" />
+    				<input v-model="Email" type="text" id="userName" placeholder="请输入您的账户或登录名" />
     				<i></i>
     			</div>
     			<!--提示信息-->
@@ -67,16 +67,16 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 		var app=new Vue({
 			el:"#login",
 			data:{
-				userName:"",
+				Email:"",
 				password:""
 			},
 			methods:{
 				login:function () {
 					var that=this;
 					console.log("登陆前")
-					axios.get("http://localhost:8280/EnterToHome", {
+					axios.get("/admin/login", {
 						params: {
-							userName: that.userName,
+							Email: that.Email,
 							password: that.password,
 						}
 					}).then(
@@ -94,7 +94,9 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 								}
 								else//跳转到公司首页
 								{
-									window.location.href="/companyservice/login?id="+response.data
+									// window.location.href="/companyservice/login?id="+response.data
+									alert("登陆成功")
+									window.location.href="/EnterToAdmin"
 								}
 							},
 							function (err) {
