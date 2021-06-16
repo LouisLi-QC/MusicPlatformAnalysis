@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
         //获取起风了评论中VIP或普通用户的人数
         QflCommentsExample qflCommentsExample=new QflCommentsExample();
         QflCommentsExample.Criteria qflCommentsExample_criteria=qflCommentsExample.createCriteria();
-        qflCommentsExample_criteria.andVipEqualTo(VIP);
+        qflCommentsExample_criteria.andVipEqualTo(Integer.valueOf(VIP));
         long qflVIPCounts=qflCommentsMapper.countByExample(qflCommentsExample);
 
         //获取像我这样的人评论中VIP或普通用户的人数

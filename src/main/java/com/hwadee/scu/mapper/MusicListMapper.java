@@ -3,7 +3,10 @@ package com.hwadee.scu.mapper;
 import com.hwadee.scu.common.domain.MusicList;
 import com.hwadee.scu.common.domain.MusicListExample;
 import java.util.List;
+
+import com.hwadee.scu.common.domain.entity.PlayList;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface MusicListMapper {
     /**
@@ -93,4 +96,7 @@ public interface MusicListMapper {
      * @mbg.generated Tue Jun 15 11:22:48 CST 2021
      */
     int updateByPrimaryKey(MusicList record);
+
+    @Select("select listName ,count(musicName) as count from music_list group by listName order by count desc limit 10")
+    List<PlayList> selectListSong();
 }

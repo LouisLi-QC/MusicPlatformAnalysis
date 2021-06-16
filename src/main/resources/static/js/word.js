@@ -138,15 +138,16 @@ var qfl_option = {
             textStyle: {
                 normal: {
                     color: function () {
-                        return 'rgb(' +
-                            Math.round(Math.random() * 255) + ','
-                            + Math.round(Math.random() * 255) +','
-                            + Math.round(Math.random() * 255) + ')'
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
                     }
                 },
                 emphasis: {
-                    shadowBlur: 10,
-                    shadowColor: '#05073b'
+                     shadowBlur: 10,
+                     shadowColor: '#05073b'
                 }
             },
             data:totalData.qifengle

@@ -10,8 +10,8 @@ import java.util.List;
 
 @Service
 public interface WordCloudService {
-    public List<GdsnaqgsComNum> findAllGd();
-    public List<CdComNum> findAllCd();
-    public List<XwzydrComNum> findAllMe();
-    public List<QflComNum> findAllQfl();
+    List<GdsnaqgsComNum> findAllGd();
+    List<CdComNum> findAllCd();
+    List<XwzydrComNum> findAllMe();
+    List<QflComNum> findAllQfl();
 }
