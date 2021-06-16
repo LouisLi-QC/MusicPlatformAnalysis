@@ -75,8 +75,8 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     		<div class="register-box">
     			<!--表单项-->
     			<div class="box default">
-    				<label for="userName">手机号</label>
-    				<input v-model="Email" type="text" id="userName" placeholder="请输入您的手机号" @blur="checkEmail" @input="checkEmail"/>
+    				<label for="userName">邮箱</label>
+    				<input v-model="Email" type="text" id="userName" placeholder="请输入您邮箱" @blur="checkEmail" @input="checkEmail"/>
 					<label v-if="flagName" style="margin-bottom: 3px;color: green">邮箱不正确</label>
 
     				<i></i>
@@ -188,7 +188,6 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 					const reg = /^1([38]\d|5[0-35-9]|7[3678])\d{8}$/;
 					const reg2=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 					if (this.Email == '' || !reg2.test(this.Email)) {
-						console.log("邮箱不正确")
 						this.flagName=true
 					}
 					else{
