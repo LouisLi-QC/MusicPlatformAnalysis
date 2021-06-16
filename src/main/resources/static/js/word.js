@@ -28,7 +28,7 @@ function randomColor() {
 }
 gd_option = {
     backgroundColor: '#dc6d9a',
-    // tooltip: {},
+    tooltip: {},
     series: (
         {
             type: 'wordCloud',
@@ -38,7 +38,7 @@ gd_option = {
             shape: 'pentagon',
             textStyle: {
                 normal: {
-                    fontFamily: '草书',
+                    fontFamily: '微软雅黑',
                     color: function () {
                         var colors = ['#fda67e', '#81cacc', '#cca8ba', "#88cc81", "#82a0c5", '#fddb7e', '#735ba1', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
                         return colors[parseInt(Math.random() * 10)];}
