@@ -408,6 +408,28 @@
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
+                <!-- LINE CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">用户等级分布</h3>
+
+                        <div class="card-tools">
+                            <!--                            <button type="button" class="btn btn-tool" data-card-widget="collapse">-->
+                            <!--                                <i class="fas fa-minus"></i>-->
+                            <!--                            </button>-->
+                            <!--                            <button type="button" class="btn btn-tool" data-card-widget="remove">-->
+                            <!--                                <i class="fas fa-times"></i>-->
+                            <!--                            </button>-->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <div id="levelChart"  style="min-height: 500px; height: 500px; max-height: 500px; max-width: 100%;"></div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
 
             </div><!-- /.container-fluid -->
         </section>
@@ -516,11 +538,36 @@
 
         let barChart = new uPlot(optsLineChart, data, document.getElementById('genderChart'));
 
+        const optslevelChart = {
+            ... getSize('levelChart'),
+            scales: {
+                x: {
+                    time: false,
+                },
+                y: {
+                    range: [0, 100],
+                },
+            },
+            series: [
+                {},
+                {
+                    fill: 'transparent',
+                    width: 5,
+                    stroke: 'rgba(60,141,188,1)',
+                },
+                {
+                    stroke: '#c1c7d1',
+                    width: 5,
+                    fill: 'transparent',
+                },
+            ],
+        };
 
+        let levelChart = new uPlot(optslevelChart, data, document.getElementById('levelChart'));
         window.addEventListener("resize", e => {
             lineChart.setSize(getSize('vipChart'));
             barChart.setSize(getSize('genderChart'));
-
+            levelChart.setSize(getSize('levelChart'));
         });
     })
 </script>
