@@ -69,21 +69,47 @@ var myChart2 = echarts.init(chartDom2);
 var option2;
 
 option2 = {
-    xAxis: {
-        type: 'category',
-        data: total.songNumber.listName
+    dataset: {
+        source: [
+            [ 'amount', 'product'],
+            [ total.songNumber.songNumber[0], total.songNumber.listName[0]],
+            [ total.songNumber.songNumber[1], total.songNumber.listName[1]],
+            [ total.songNumber.songNumber[2], total.songNumber.listName[2]],
+            [ total.songNumber.songNumber[3], total.songNumber.listName[3]],
+            [ total.songNumber.songNumber[4], total.songNumber.listName[4]],
+            [ total.songNumber.songNumber[5], total.songNumber.listName[5]],
+            [ total.songNumber.songNumber[6], total.songNumber.listName[6]],
+            [ total.songNumber.songNumber[7], total.songNumber.listName[7]],
+            [ total.songNumber.songNumber[8], total.songNumber.listName[8]],
+            [ total.songNumber.songNumber[9], total.songNumber.listName[9]]
+        ]
     },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: total.songNumber.songNumber,
-        type: 'bar',
-        showBackground: true,
-        backgroundStyle: {
-            color: 'rgba(180, 180, 180, 0.2)'
+    grid: {containLabel: true},
+    xAxis: {name: 'amount'},
+    yAxis: {type: 'category'},
+    visualMap: {
+        orient: 'horizontal',
+        left: 'center',
+        min: 500,
+        max: 1000,
+        text: ['高', '低'],
+        // Map the score column to color
+        dimension: 0,
+        inRange: {
+            color: ['#65B581', '#FFCE34', '#FD665F']
         }
-    }]
+    },
+    series: [
+        {
+            type: 'bar',
+            encode: {
+                // Map the "amount" column to X axis.
+                x: 'amount',
+                // Map the "product" column to Y axis
+                y: 'product'
+            }
+        }
+    ]
 };
 
 option2 && myChart2.setOption(option2);
