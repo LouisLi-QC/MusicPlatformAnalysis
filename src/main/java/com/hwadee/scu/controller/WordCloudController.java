@@ -30,22 +30,20 @@ public class WordCloudController {
         List<HashMap<String, Object>> gdListMap = new ArrayList<>();
         for(int i = 0; i<gdData.size(); i++){
             HashMap<String, Object> map = new HashMap<>();
-            map.put("word",gdData.get(i).getWord());
-            map.put("num",gdData.get(i).getNum());
+            map.put("name",gdData.get(i).getWord());
+            map.put("value",gdData.get(i).getNum());
             gdListMap.add(map);
         }
-        System.out.println(gdListMap);
         result.put("guangdong",gdListMap);
     //成都
         List<CdComNum> cdData = wordCloudService.findAllCd();
         List<HashMap<String, Object>> cdListMap = new ArrayList<>();
         for(int i = 0; i<cdData.size(); i++){
             HashMap<String, Object> map = new HashMap<>();
-            map.put("word",cdData.get(i).getWord());
-            map.put("num",cdData.get(i).getNum());
+            map.put("name",cdData.get(i).getWord());
+            map.put("value",cdData.get(i).getNum());
             cdListMap.add(map);
         }
-        System.out.println(cdListMap);
         result.put("chengdu",cdListMap);
 
         //像我这样的人
@@ -53,11 +51,10 @@ public class WordCloudController {
         List<HashMap<String, Object>> xwListMap = new ArrayList<>();
         for(int i = 0; i<xwData.size(); i++){
             HashMap<String, Object> map = new HashMap<>();
-            map.put("word",xwData.get(i).getWord());
-            map.put("num",xwData.get(i).getNum());
+            map.put("name",xwData.get(i).getWord());
+            map.put("value",xwData.get(i).getNum());
             xwListMap.add(map);
         }
-        System.out.println(xwListMap);
         result.put("peopleLikeMe",xwListMap);
 
         //起风了
@@ -65,13 +62,11 @@ public class WordCloudController {
         List<HashMap<String, Object>> qflListMap = new ArrayList<>();
         for(int i = 0; i<qflData.size(); i++){
             HashMap<String, Object> map = new HashMap<>();
-            map.put("word",qflData.get(i).getWord());
-            map.put("num",qflData.get(i).getNum());
+            map.put("name",qflData.get(i).getWord());
+            map.put("value",qflData.get(i).getNum());
             qflListMap.add(map);
         }
-        System.out.println(qflListMap);
         result.put("qifengle",qflListMap);
-
         String res = JSON.toJSONString(result);
         System.out.println(res);
         return res;
