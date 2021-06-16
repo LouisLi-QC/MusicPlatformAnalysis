@@ -18,21 +18,47 @@ var myChart1 = echarts.init(chartDom1);
 var option1;
 
 option1 = {
-    xAxis: {
-        type: 'category',
-        data: total.playNumber.listName
+    dataset: {
+        source: [
+            ['amount', 'product'],
+            [total.playNumber.playNumber[0], total.playNumber.listName[0]],
+            [total.playNumber.playNumber[1], total.playNumber.listName[1]],
+            [total.playNumber.playNumber[2], total.playNumber.listName[2]],
+            [total.playNumber.playNumber[3], total.playNumber.listName[3]],
+            [total.playNumber.playNumber[4], total.playNumber.listName[4]],
+            [total.playNumber.playNumber[5], total.playNumber.listName[5]],
+            [total.playNumber.playNumber[6], total.playNumber.listName[6]],
+            [total.playNumber.playNumber[7], total.playNumber.listName[7]],
+            [total.playNumber.playNumber[8], total.playNumber.listName[8]],
+            [total.playNumber.playNumber[9], total.playNumber.listName[9]]
+        ]
     },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: total.playNumber.playNumber,
-        type: 'bar',
-        showBackground: true,
-        backgroundStyle: {
-            color: 'rgba(180, 180, 180, 0.2)'
+    grid: {containLabel: true},
+    xAxis: {name: 'amount'},
+    yAxis: {type: 'category'},
+    visualMap: {
+        orient: 'horizontal',
+        left: 'center',
+        min: 0,
+        max: 1000000000,
+        text: ['High Score', 'Low Score'],
+        // Map the score column to color
+        dimension: 0,
+        inRange: {
+            color: ['#65B581', '#FFCE34', '#FD665F']
         }
-    }]
+    },
+    series: [
+        {
+            type: 'bar',
+            encode: {
+                // Map the "amount" column to X axis.
+                x: 'amount',
+                // Map the "product" column to Y axis
+                y: 'product'
+            }
+        }
+    ]
 };
 
 option1 && myChart1.setOption(option1);

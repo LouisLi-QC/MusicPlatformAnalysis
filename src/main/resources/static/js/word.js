@@ -19,10 +19,17 @@ function getData() {
 }
 var totalData = getData();
 var gd_option;
+function randomColor() {
+    return 'rgb(' + [
+        Math.round(Math.random() * 160),
+        Math.round(Math.random() * 160),
+        Math.round(Math.random() * 160)
+    ].join(',') + ')';
+}
 gd_option = {
-    backgroundColor: '#0c84b7',
+    backgroundColor: '#dc6d9a',
     // tooltip: {},
-    series: [
+    series: (
         {
             type: 'wordCloud',
             gridSize: 2,
@@ -30,25 +37,16 @@ gd_option = {
             rotationRange: [-45, 0, 45, 90],
             shape: 'pentagon',
             textStyle: {
-                fontFamily:'微软雅黑',
                 normal: {
+                    fontFamily: '草书',
                     color: function () {
                         var colors = ['#fda67e', '#81cacc', '#cca8ba', "#88cc81", "#82a0c5", '#fddb7e', '#735ba1', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
-                        return colors[parseInt(Math.random() * 10)];
-                        // return 'rgb(' +
-                        //     Math.round(Math.random() * 255) + ','
-                        //     + Math.round(Math.random() * 255) + ','
-                        //     + Math.round(Math.random() * 255) + ')'
-                    }
-                },
-                emphasis: {
-                    shadowBlur: 10,
-                    shadowColor: '#05073b'
+                        return colors[parseInt(Math.random() * 10)];}
                 }
-            },
+                },
             data: totalData.guangdong
         }
-    ]
+    )
 };
 chart1.setOption(gd_option);
 window.onresize = chart1.resize;
@@ -57,7 +55,7 @@ window.onresize = chart1.resize;
 var chart2 = echarts.init(document.getElementById('chengdu'));
 
 var cd_option = {
-    backgroundColor: '#0c84b7',
+    backgroundColor: '#00dbf8',
     tooltip: {},
     series: [
         {
@@ -92,7 +90,7 @@ window.onresize = chart2.resize;
 var chart3 = echarts.init(document.getElementById('peopleLikeMe'));
 
 var xw_option = {
-    backgroundColor: '#0c84b7',
+    backgroundColor: '#cb6666',
     tooltip: {},
     series: [
         {
@@ -126,7 +124,7 @@ window.onresize = chart3.resize;
 var chart4 = echarts.init(document.getElementById('qiFeng'));
 
 var qfl_option = {
-    backgroundColor: '#0c84b7',
+    backgroundColor: '#728df3',
     tooltip: {},
     series: [
         {
