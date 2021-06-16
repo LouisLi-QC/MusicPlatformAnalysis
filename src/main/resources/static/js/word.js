@@ -21,7 +21,7 @@ var totalData = getData();
 var gd_option;
 gd_option = {
     backgroundColor: '#0c84b7',
-    tooltip: {},
+    // tooltip: {},
     series: [
         {
             type: 'wordCloud',
@@ -30,12 +30,15 @@ gd_option = {
             rotationRange: [-45, 0, 45, 90],
             shape: 'pentagon',
             textStyle: {
+                fontFamily:'微软雅黑',
                 normal: {
                     color: function () {
-                        return 'rgb(' +
-                            Math.round(Math.random() * 255) + ','
-                            + Math.round(Math.random() * 255) + ','
-                            + Math.round(Math.random() * 255) + ')'
+                        var colors = ['#fda67e', '#81cacc', '#cca8ba', "#88cc81", "#82a0c5", '#fddb7e', '#735ba1', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
+                        return colors[parseInt(Math.random() * 10)];
+                        // return 'rgb(' +
+                        //     Math.round(Math.random() * 255) + ','
+                        //     + Math.round(Math.random() * 255) + ','
+                        //     + Math.round(Math.random() * 255) + ')'
                     }
                 },
                 emphasis: {
