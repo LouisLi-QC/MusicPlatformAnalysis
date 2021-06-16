@@ -4,6 +4,7 @@ import com.hwadee.scu.common.domain.XwzydrComNum;
 import com.hwadee.scu.common.domain.XwzydrComNumExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface XwzydrComNumMapper {
     /**
@@ -93,4 +94,7 @@ public interface XwzydrComNumMapper {
      * @mbg.generated Tue Jun 15 18:35:16 CST 2021
      */
     int updateByPrimaryKey(XwzydrComNum record);
+
+    @Select("select *from xwzydr_com_num")
+    List<XwzydrComNum> findAllMe();
 }

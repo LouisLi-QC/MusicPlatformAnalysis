@@ -2,20 +2,23 @@
 var chart1 = echarts.init(document.getElementById('guangDong'));
 
 function getData() {
-    var wordCloud = {};
+    let wordCloud = {};
     $.ajax({
         type: 'GET',
         url: "/charts/wordCloud",
         //dataType: "json",
         success: function(res) {
             wordCloud = res;
-            console.log(wordCloud);
+            console.log(res);
 
+            temp = Json.format(res);
+            console.log(temp);
         },
         error: function() {
             console.log("fucking error");
         }
     });
+    //console.log(wordCloud);
     return wordCloud;
 }
 var totalData = getData();
@@ -44,7 +47,106 @@ var option = {
                     shadowColor: '#05073b'
                 }
             },
-            data:totalData
+            data:[{
+                "name": "特许经营",
+                "value": 1
+            },
+                {
+                    "name": "休闲爱好",
+                    "value": 1169
+                },
+                {
+                    "name": "收藏",
+                    "value": 412
+                },
+                {
+                    "name": "摄影",
+                    "value": 393
+                },
+                {
+                    "name": "温泉",
+                    "value": 230
+                },
+                {
+                    "name": "博彩彩票",
+                    "value": 211
+                },
+                {
+                    "name": "美术",
+                    "value": 207
+                },
+                {
+                    "name": "书法",
+                    "value": 139
+                },
+                {
+                    "name": "DIY手工",
+                    "value": 75
+                },
+                {
+                    "name": "舞蹈",
+                    "value": 23
+                },
+                {
+                    "name": "钓鱼",
+                    "value": 21
+                },
+                {
+                    "name": "棋牌桌游",
+                    "value": 17
+                },
+                {
+                    "name": "KTV",
+                    "value": 6
+                },
+                {
+                    "name": "密室",
+                    "value": 5
+                },
+                {
+                    "name": "采摘",
+                    "value": 4
+                },
+                {
+                    "name": "电玩",
+                    "value": 1
+                },
+                {
+                    "name": "真人CS",
+                    "value": 1
+                },
+                {
+                    "name": "轰趴",
+                    "value": 1
+                },
+                {
+                    "name": "家电数码",
+                    "value": 1111
+                },
+                {
+                    "name": "手机",
+                    "value": 885
+                },
+                {
+                    "name": "电脑",
+                    "value": 543
+                },
+                {
+                    "name": "大家电",
+                    "value": 321
+                },
+                {
+                    "name": "家电关注品牌",
+                    "value": 253
+                },
+                {
+                    "name": "网络设备",
+                    "value": 162
+                },
+                {
+                    "name": "摄影器材",
+                    "value": 149
+                }]
         }
     ]
 };

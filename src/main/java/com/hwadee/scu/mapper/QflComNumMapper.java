@@ -4,6 +4,7 @@ import com.hwadee.scu.common.domain.QflComNum;
 import com.hwadee.scu.common.domain.QflComNumExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface QflComNumMapper {
     /**
@@ -93,4 +94,7 @@ public interface QflComNumMapper {
      * @mbg.generated Tue Jun 15 18:35:16 CST 2021
      */
     int updateByPrimaryKey(QflComNum record);
+
+    @Select("select *from qfi_com_num")
+    List<QflComNum> findAllQfl();
 }
