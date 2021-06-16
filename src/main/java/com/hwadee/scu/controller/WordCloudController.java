@@ -35,7 +35,7 @@ public class WordCloudController {
             gdListMap.add(map);
         }
         result.put("guangdong",gdListMap);
-    //成都
+        //成都
         List<CdComNum> cdData = wordCloudService.findAllCd();
         List<HashMap<String, Object>> cdListMap = new ArrayList<>();
         for(int i = 0; i<cdData.size(); i++){
