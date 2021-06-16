@@ -1,5 +1,4 @@
 //广东爱情故事
-console.log(document.getElementById('guangDong'))
 var chart1 = echarts.init(document.getElementById('guangDong'));
 
 function getData() {
