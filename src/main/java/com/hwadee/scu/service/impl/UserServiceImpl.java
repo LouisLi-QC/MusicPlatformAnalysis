@@ -4,6 +4,7 @@ import com.hwadee.scu.common.domain.*;
 import com.hwadee.scu.common.domain.entity.AreaMap;
 import com.hwadee.scu.common.domain.entity.User;
 import com.hwadee.scu.common.domain.entity.UserCount;
+import com.hwadee.scu.common.domain.entity.UserLevel;
 import com.hwadee.scu.mapper.*;
 import com.hwadee.scu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,5 +111,10 @@ public class UserServiceImpl implements UserService {
         userInformationExample_criteria.andSexEqualTo(sex);
         Long sexCounts=userInformationMapper.countByExample(userInformationExample);
         return sexCounts;
+    }
+
+    @Override
+    public List<UserLevel> getAllUserLevel() {
+        return userInformationMapper.getAllUserLevel();
     }
 }

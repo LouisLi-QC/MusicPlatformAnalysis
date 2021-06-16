@@ -6,7 +6,6 @@ $.ajax({
     dataType: "json",
     success: function(res) {
         total = res;
-        console.log(total);
     },
     error: function() {
         console.log("fucking error");
@@ -36,8 +35,8 @@ option1 = {
             type: 'pie',
             radius: '50%',
             data: [
-                {value: total.vip.value, name: "VIP用户"},
-                {value: total.normal.value, name: "普通用户"}
+                {value: total.userInfo.vIP.value, name: "VIP用户"},
+                {value: total.userInfo.normal.value, name: "普通用户"}
             ],
             emphasis: {
                 itemStyle: {
@@ -77,8 +76,8 @@ option2 = {
             type: 'pie',
             radius: '50%',
             data: [
-                {value: total.male.value, name: '男'},
-                {value: total.female.value, name: '女'}
+                {value: total.userInfo.male.value, name: '男'},
+                {value: total.userInfo.female.value, name: '女'}
             ],
             emphasis: {
                 itemStyle: {
