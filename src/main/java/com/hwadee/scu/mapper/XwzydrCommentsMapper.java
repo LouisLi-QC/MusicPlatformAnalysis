@@ -3,7 +3,10 @@ package com.hwadee.scu.mapper;
 import com.hwadee.scu.common.domain.XwzydrComments;
 import com.hwadee.scu.common.domain.XwzydrCommentsExample;
 import java.util.List;
+
+import com.hwadee.scu.common.domain.entity.Comment;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface XwzydrCommentsMapper {
     /**
@@ -93,4 +96,6 @@ public interface XwzydrCommentsMapper {
      * @mbg.generated Tue Jun 15 11:22:48 CST 2021
      */
     int updateByPrimaryKey(XwzydrComments record);
+    @Select("SELECT Hour(time) as Hour,count(*) as Count FROM xwzydr_comments GROUP BY HOUR ORDER BY Hour")
+    List<Comment> getComments();
 }
