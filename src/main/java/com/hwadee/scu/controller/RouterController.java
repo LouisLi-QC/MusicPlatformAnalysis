@@ -35,16 +35,6 @@ public class RouterController {
         return "login";
     }
 
-    @RequestMapping("/EnterToForgotPassword")
-    public String EnterToForgotPassword() {
-        return "examples/forgot-password";
-    }
-
-    @RequestMapping("/EnterToRecoverPassword")
-    public String EnterToRecoverPassword() {
-        return "examples/recover-password";
-    }
-
     @RequestMapping("/EnterToShow")
     public String EnterToShow(){ return "wordCloud";}
 
@@ -66,25 +56,8 @@ public class RouterController {
     @RequestMapping("/EnterToWordCloud")
     public String EnterToWordCloud(){ return "wordCloud";}
 
-    @RequestMapping("/EnterToAddEvaluation")
-    public String EnterToAddEvaluation() {
-        return "AddEvaluation";
-    }
-
-    @RequestMapping("/EnterToCompanyInformation")
-    public String EnterToCompanyInformation() {
-        return "CompanyInformationOperation";
-    }
-
-    @RequestMapping("/EnterToCompanyCertification")
-    public String EnterToCompanyCertification() {
-        return "CompanyCertification";
-    }
-
-    @RequestMapping("/EnterToMission")
-    public String EnterToMission() {
-        return "Mission";
-    }
+    @RequestMapping("/EnterToSingerComment")
+    public String EnterToSingerComment(){return "singerComment";}
 
 }
 
