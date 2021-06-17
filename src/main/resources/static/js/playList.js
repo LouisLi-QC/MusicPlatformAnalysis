@@ -41,7 +41,7 @@ option1 = {
         left: 'center',
         min: 0,
         max: 1000000000,
-        text: ['High Score', 'Low Score'],
+        text: ['高', '低'],
         // Map the score column to color
         dimension: 0,
         inRange: {

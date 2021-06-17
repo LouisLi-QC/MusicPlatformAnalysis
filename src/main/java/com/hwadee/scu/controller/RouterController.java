@@ -16,8 +16,8 @@ public class RouterController {
     public String EnterToAdmin(){
         return "admin";
     }
-    @RequestMapping("/EnterToAdminTest")
-    public String EnterToAdmin2(){
+    @RequestMapping("/EnterToAdminVisualization")
+    public String EnterToAdminV(){
         return "adminTest";
     }
     @RequestMapping("/EnterToRegister")
