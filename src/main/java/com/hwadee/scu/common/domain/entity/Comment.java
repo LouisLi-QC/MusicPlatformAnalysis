@@ -2,7 +2,7 @@ package com.hwadee.scu.common.domain.entity;
 
 /**
  * @program: musicPlatform
- * @description:
+ * @description: 每小时的评论数量
  * @author: fanyang
  * @create: 2021-06-16 18:12
  **/

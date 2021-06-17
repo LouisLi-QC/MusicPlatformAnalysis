@@ -84,20 +84,7 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 								console.log("登陆成功" + response.data)
 								console.log( response)
 								console.log( response.data)
-								if(response.data==0){//0代表没有这个公司
-									alert("未查询到该账号，请注册之后再登陆")
-								}
-								else if(response.data==-1)//-1代表有这个公司，但是密码输入错误
-								{
 
-									alert("密码错误，请检查之后重新输入")
-								}
-								else//跳转到公司首页
-								{
-									// window.location.href="/companyservice/login?id="+response.data
-									//alert("登陆成功")
-									window.location.href="/EnterToAdmin"
-								}
 							},
 							function (err) {
 								console.log("失败" + err)

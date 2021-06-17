@@ -3,6 +3,7 @@ package com.hwadee.scu.mapper.extend;
 import com.hwadee.scu.common.domain.entity.Area;
 import com.hwadee.scu.common.domain.entity.Comment;
 import com.hwadee.scu.common.domain.entity.SingerTotalComment;
+import com.hwadee.scu.common.domain.entity.likeCount;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * @program: musicPlatform
  * @description: 查询数据库的sql
- * @author: 樊阳
+ * @author: fanyang
  * @create: 2021-06-16 18:31
  **/
 
@@ -35,5 +36,8 @@ public interface DataMapper {
     List<Area> getAreas();
     @Select("select player as singer,sum(commentsNum) as Count from song_player_commentsnum_mostlikecomnum GROUP BY player  ORDER BY Count DESC")
     List<SingerTotalComment> getTotalComments();
+
+    @Select("SELECT song,mostLikeComNum as count from song_player_commentsnum_mostlikecomnum ORDER BY (count+0) Desc limit 10")
+    List<likeCount> getLikeCount();
 
 }

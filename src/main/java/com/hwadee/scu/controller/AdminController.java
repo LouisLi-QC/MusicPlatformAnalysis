@@ -60,7 +60,7 @@ public class AdminController {
      * create by: fanyang
      * description: 用户注册
      * params:Email为邮箱，password为密码，userCode为用户输入的验证码
-     * return:410代表验证码过期，200代码注册成功
+     * return:410代表验证码过期，200代表注册成功
      * create time:
      */
     @RequestMapping("/register")

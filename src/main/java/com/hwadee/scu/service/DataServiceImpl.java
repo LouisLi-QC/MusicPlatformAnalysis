@@ -3,6 +3,7 @@ package com.hwadee.scu.service;
 import com.hwadee.scu.common.domain.entity.Area;
 import com.hwadee.scu.common.domain.entity.Comment;
 import com.hwadee.scu.common.domain.entity.SingerTotalComment;
+import com.hwadee.scu.common.domain.entity.likeCount;
 import com.hwadee.scu.mapper.extend.DataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,5 +66,18 @@ public class DataServiceImpl implements DataService {
     public List<SingerTotalComment> getTotalComment() {
         List<SingerTotalComment> totalComments=dataMapper.getTotalComments();
         return totalComments;
+    }
+
+    /**
+     * create by: fanyang
+     * description: 获得所有歌的歌名以及对应的最高点赞数量
+     * params:
+     * return:
+     * create time:
+     */
+    @Override
+    public List<likeCount> getLikeCount() {
+        List<likeCount> likeCounts=dataMapper.getLikeCount();
+        return likeCounts;
     }
 }

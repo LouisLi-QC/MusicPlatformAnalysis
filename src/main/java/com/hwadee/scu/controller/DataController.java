@@ -2,10 +2,7 @@ package com.hwadee.scu.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.hwadee.scu.common.domain.entity.Area;
-import com.hwadee.scu.common.domain.entity.Comment;
-import com.hwadee.scu.common.domain.entity.Singer;
-import com.hwadee.scu.common.domain.entity.SingerTotalComment;
+import com.hwadee.scu.common.domain.entity.*;
 import com.hwadee.scu.common.util.PinYinUtil;
 import com.hwadee.scu.mapper.extend.DataMapper;
 import com.hwadee.scu.service.DataService;
@@ -79,6 +76,13 @@ public class DataController {
         return JSON.toJSONString(map);
     }
 
+    /**
+     * create by: fanyang
+     * description: 一个歌手有多首歌，获取一个歌手所有的歌的总播放量
+     * params:无
+     * return:返回两个数组，一个为歌手数组，一个为对应的播放量数组
+     * create time:
+     */
     @RequestMapping("/getTotalComment")
     public String getTotalComment(){
         List<SingerTotalComment> singerTotalComments=dataService.getTotalComment();
@@ -92,5 +96,12 @@ public class DataController {
         map.put("singer",singer);
         map.put("comment",commentCount);
         return JSON.toJSONString(map);
+    }
+
+    @RequestMapping("/getLikeCount")
+    public String getLikeCount(){
+        List<likeCount> likeCounts=dataService.getLikeCount();
+        Map<String,Integer> map=new HashMap<>();
+        return JSON.toJSONString(likeCounts);
     }
 }
