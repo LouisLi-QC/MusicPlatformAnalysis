@@ -36,7 +36,7 @@ public class RouterController {
     }
 
     @RequestMapping("/EnterToShow")
-    public String EnterToShow(){ return "wordCloud";}
+    public String EnterToShow(){ return "test";}
 
     @RequestMapping("/EnterToAreaMap")
     public String EnterToAreaMap(){ return "areaMap";}
