@@ -11,7 +11,6 @@ $.ajax({
         console.log("fucking error");
     }
 });
-
 //初始化echarts实例
 var myChart = echarts.init(document.getElementById('area'));
 // 全国省份列表
@@ -20,7 +19,7 @@ function randomData() {
 }
 
 var dataMap =[
-    {name: '北京',value: total.beijing },{name: '天津',value: total.tianjin},
+    {name: '北京',value: total.beijing ,value1:"2%"},{name: '天津',value: total.tianjin},
     {name: '上海',value: total.shanghai},{name: '重庆',value: total.zhongqing},
     {name: '河北',value: total.hebei},{name: '河南',value: total.henan},
     {name: '云南',value: total.yunnan },{name: '辽宁',value: total.liaoning},
@@ -54,7 +53,7 @@ for (var i = 0; i < specialMap.length; i++) {
 var option = {
     tooltip: {
         formatter: function (params) {
-            var info = '<p style="font-size:18px">' + params.name + params.value +'</p><p style="font-size:14px"></p>'
+            var info = '<p style="font-size:18px">' + params.name + params.value +'</p><p style="font-size:14px"> </p>'
             return info;
         },
         backgroundColor: "rgba(255,219,67,0.93)",//提示标签背景颜色
