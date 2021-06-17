@@ -1,5 +1,6 @@
 package com.hwadee.scu.service;
 
+import com.hwadee.scu.common.domain.entity.Area;
 import com.hwadee.scu.common.domain.entity.Comment;
 
 import java.util.List;
@@ -13,4 +14,5 @@ import java.util.List;
 
 public interface DataService {
     List<List<Comment>> getComment();
+    List<Area> getAreas();
 }

@@ -1,7 +1,9 @@
 package com.hwadee.scu;
 
+import com.hwadee.scu.common.domain.entity.Area;
 import com.hwadee.scu.common.domain.entity.Comment;
 import com.hwadee.scu.common.util.Email;
+import com.hwadee.scu.common.util.PinYinUtil;
 import com.hwadee.scu.common.util.StringRedisUtils;
 import com.hwadee.scu.mapper.CdCommentsMapper;
 import com.hwadee.scu.mapper.extend.DataMapper;
@@ -26,16 +28,25 @@ class ScuApplicationTests {
     CdCommentsMapper cdCommentsMapper;
     @Autowired
     private DataMapper dataMapper;
+
     public static class Song{
 
     }
     @Test
     void contextLoads() {
-        List<Comment> comments =dataMapper.getCdComments();
-        System.out.println(comments.size());
-        for(int i=0;i<comments.size();i++){
-            System.out.println(comments.get(i).getHour());
-            System.out.println(comments.get(i).getCount());
+//        List<Comment> comments =dataMapper.getCdComments();
+//        System.out.println(comments.size());
+//        for(int i=0;i<comments.size();i++){
+//            System.out.println(comments.get(i).getHour());
+//            System.out.println(comments.get(i).getCount());
+//        }
+
+        List<Area> areas=dataMapper.getAreas();
+        System.out.println(areas.size());
+        for(int i=0;i<areas.size();i++){
+
+            System.out.println( PinYinUtil.getPinyin(areas.get(i).getProvince()));
+            System.out.println(areas.get(i).getCount());
         }
 
     }

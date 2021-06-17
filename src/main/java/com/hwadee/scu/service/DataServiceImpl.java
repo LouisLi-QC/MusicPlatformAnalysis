@@ -1,5 +1,6 @@
 package com.hwadee.scu.service;
 
+import com.hwadee.scu.common.domain.entity.Area;
 import com.hwadee.scu.common.domain.entity.Comment;
 import com.hwadee.scu.mapper.extend.DataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,18 @@ public class DataServiceImpl implements DataService {
         res.add(comments3);
         res.add(comments4);
         return res;
+    }
+
+    /**
+     * create by: fanyang
+     * description: 返回用户的地区分布
+     * params:无
+     * return:返回一个list<Area>
+     * create time:
+     */
+    @Override
+    public List<Area> getAreas() {
+        List<Area> areas=dataMapper.getAreas();
+        return areas;
     }
 }
