@@ -8,12 +8,12 @@ package com.hwadee.scu.common.domain.entity;
  **/
 
 public class likeCount {
-    private String song;
-    private int count;
-    public String getSong(){
-        return song;
+    private String name;
+    private int value;
+    public String getName(){
+        return name;
     }
-    public int getCount(){
-        return count;
+    public int getValue(){
+        return value;
     }
 }

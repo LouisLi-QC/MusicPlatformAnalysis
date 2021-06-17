@@ -37,7 +37,7 @@ public interface DataMapper {
     @Select("select player as singer,sum(commentsNum) as Count from song_player_commentsnum_mostlikecomnum GROUP BY player  ORDER BY Count DESC")
     List<SingerTotalComment> getTotalComments();
 
-    @Select("SELECT song,mostLikeComNum as count from song_player_commentsnum_mostlikecomnum ORDER BY (count+0) Desc limit 10")
+    @Select("SELECT song as name,mostLikeComNum as value from song_player_commentsnum_mostlikecomnum ORDER BY (value+0) Desc limit 10")
     List<likeCount> getLikeCount();
 
 }
