@@ -2,6 +2,7 @@ package com.hwadee.scu.service;
 
 import com.hwadee.scu.common.domain.entity.Area;
 import com.hwadee.scu.common.domain.entity.Comment;
+import com.hwadee.scu.common.domain.entity.SingerTotalComment;
 import com.hwadee.scu.mapper.extend.DataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,5 +52,18 @@ public class DataServiceImpl implements DataService {
     public List<Area> getAreas() {
         List<Area> areas=dataMapper.getAreas();
         return areas;
+    }
+
+    /**
+     * create by: fanyang
+     * description: 获得所有歌手所属歌曲的所有播放量之和
+     * params:
+     * return:返回一个List<SingerTotalComment>
+     * create time:
+     */
+    @Override
+    public List<SingerTotalComment> getTotalComment() {
+        List<SingerTotalComment> totalComments=dataMapper.getTotalComments();
+        return totalComments;
     }
 }

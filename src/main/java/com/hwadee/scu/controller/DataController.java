@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.hwadee.scu.common.domain.entity.Area;
 import com.hwadee.scu.common.domain.entity.Comment;
+import com.hwadee.scu.common.domain.entity.Singer;
+import com.hwadee.scu.common.domain.entity.SingerTotalComment;
 import com.hwadee.scu.common.util.PinYinUtil;
 import com.hwadee.scu.mapper.extend.DataMapper;
 import com.hwadee.scu.service.DataService;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,7 +76,21 @@ public class DataController {
             }
         }
 
-//        JSONObject json = new JSONObject(map);
+        return JSON.toJSONString(map);
+    }
+
+    @RequestMapping("/getTotalComment")
+    public String getTotalComment(){
+        List<SingerTotalComment> singerTotalComments=dataService.getTotalComment();
+        List<String> singer=new ArrayList<>();
+        List<Integer> commentCount=new ArrayList<>();
+        Map<String,Object> map=new HashMap<>();
+        for(int i=0;i<singerTotalComments.size();i++){
+            singer.add(singerTotalComments.get(i).getSinger());
+            commentCount.add(singerTotalComments.get(i).getCount());
+        }
+        map.put("singer",singer);
+        map.put("comment",commentCount);
         return JSON.toJSONString(map);
     }
 }
