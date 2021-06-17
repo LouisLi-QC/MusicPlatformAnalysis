@@ -51,13 +51,28 @@ public class DataController {
         String res=json.toString();
         return res;
     }
+    /**
+     * create by: fanyang
+     * description: 获得地区分布
+     * params:无
+     * return:返回每个省份以及对应的人数
+     * create time:
+     */
     @RequestMapping("/getAreaMap")
     public String getAreaMap(){
         List<Area> areas=dataService.getAreas();
         Map<String,Integer> map=new HashMap<>();
         for(int i=0;i<areas.size();i++){
-            map.put(PinYinUtil.getPinyin(areas.get(i).getProvince()),areas.get(i).getCount());
+            if(!map.containsKey(PinYinUtil.getPinyin(areas.get(i).getProvince())))
+            {
+                map.put(PinYinUtil.getPinyin(areas.get(i).getProvince()),areas.get(i).getCount());
+            }
+            else
+            {
+                map.put(areas.get(i).getProvince()+PinYinUtil.getPinyin(areas.get(i).getProvince()),areas.get(i).getCount());
+            }
         }
+
 //        JSONObject json = new JSONObject(map);
         return JSON.toJSONString(map);
     }
