@@ -66,7 +66,7 @@ var option = {
         x: 'left',
         y: 'center',
         splitList: [
-            {start:601, end: 1600},{start: 401, end: 500},
+            {start:551, end: 1600},{start: 401, end: 550},
             {start: 301, end: 400},{start: 201, end: 300},
             {start: 101, end: 200},{start: 0, end:100},
         ],
