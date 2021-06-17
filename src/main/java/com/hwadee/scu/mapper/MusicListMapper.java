@@ -5,6 +5,8 @@ import com.hwadee.scu.common.domain.MusicListExample;
 import java.util.List;
 
 import com.hwadee.scu.common.domain.entity.PlayList;
+import com.hwadee.scu.common.domain.entity.Singer;
+import com.hwadee.scu.common.domain.entity.Song;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -99,4 +101,10 @@ public interface MusicListMapper {
 
     @Select("select listName ,count(musicName) as count from music_list group by listName order by count desc limit 10")
     List<PlayList> selectListSong();
+
+    @Select("select musicName ,count(musicName) as times from music_list group by musicName order by times desc limit 10")
+    List<Song> getSong();
+
+    @Select("select author ,count(author) as times from music_list group by author order by times desc limit 10")
+    List<Singer> getSinger();
 }

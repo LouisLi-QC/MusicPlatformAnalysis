@@ -14,7 +14,7 @@ $.ajax({
 
 //歌单播放量前十
 var chartDom1 = document.getElementById('playNum');
-var myChart1 = echarts.init(chartDom1);
+var myChart1 = echarts.init(chartDom1,'dark');
 var option1;
 
 option1 = {
@@ -41,7 +41,7 @@ option1 = {
         left: 'center',
         min: 0,
         max: 1000000000,
-        text: ['High Score', 'Low Score'],
+        text: ['高', '低'],
         // Map the score column to color
         dimension: 0,
         inRange: {
@@ -65,7 +65,7 @@ option1 && myChart1.setOption(option1);
 
 //歌单歌曲数前十
 var chartDom2 = document.getElementById('songNum');
-var myChart2 = echarts.init(chartDom2);
+var myChart2 = echarts.init(chartDom2,'dark');
 var option2;
 
 option2 = {

@@ -2,6 +2,9 @@ package com.hwadee.scu.service;
 
 import com.hwadee.scu.common.domain.entity.AreaMap;
 import com.hwadee.scu.common.domain.entity.User;
+import com.hwadee.scu.common.domain.entity.UserLevel;
+
+import java.util.List;
 
 public interface UserService {
     //获取VIP、普通用户、男用户以及女用户的数目信息
@@ -15,4 +18,6 @@ public interface UserService {
 
     //获取男用户以及女用户的数目信息
     Long getCountsBySex(String sex);
+
+    List<UserLevel> getAllUserLevel();
 }

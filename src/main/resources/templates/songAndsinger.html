@@ -530,49 +530,6 @@
     })
 </script>
 <script src="js/echarts.min.js"></script>
-<script>
-    var songChart = echarts.init(document.getElementById('songChart'), 'dark');
-    var optionSong;
-    var songSinger = {
-        song:{first:{name:'像我这样的人', value:300}, second:{name:'成都', value:150}},
-        singer:{first:{name:'毛不易', value:300}, second:{name:'成都', value:150}}};
-    optionSong = {
-        xAxis: {
-            type: 'category',
-            data: [songSinger.song.first.name, songSinger.song.second.name, 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [{
-            data: [songSinger.song.first.value, songSinger.song.second.value, 150, 80, 70, 110, 130, 80,143,154],
-            type: 'bar'
-        }]
-    };
-
-    optionSong && songChart.setOption(optionSong);
-
-    //分界线
-
-    var chartDom = document.getElementById('singerChart');
-    var singerChart = echarts.init(chartDom, 'dark');
-    var optionSinger;
-
-    optionSinger = {
-        xAxis: {
-            type: 'category',
-            data: [songSinger.singer.first.name, songSinger.singer.second.name, 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [{
-            data: [songSinger.singer.first.value, songSinger.singer.second.value, 120, 200, 150, 80, 70, 110, 130],
-            type: 'bar'
-        }]
-    };
-
-    optionSinger && singerChart.setOption(optionSinger);
-</script>
+<script src="js/songAndSinger.js"></script>
 </body>
 </html>

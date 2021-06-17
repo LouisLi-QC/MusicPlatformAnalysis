@@ -6,7 +6,6 @@ $.ajax({
     dataType: "json",
     success: function(res) {
         total = res;
-        console.log(total);
     },
     error: function() {
         console.log("fucking error");
@@ -32,12 +31,12 @@ option1 = {
     },
     series: [
         {
-            name: '访问来源',
+            name: '用户种类',
             type: 'pie',
             radius: '50%',
             data: [
-                {value: total.vip.value, name: "VIP用户"},
-                {value: total.normal.value, name: "普通用户"}
+                {value: total.userInfo.vIP.value, name: "VIP用户"},
+                {value: total.userInfo.normal.value, name: "普通用户"}
             ],
             emphasis: {
                 itemStyle: {
@@ -73,12 +72,12 @@ option2 = {
     },
     series: [
         {
-            name: '访问来源',
+            name: '性别',
             type: 'pie',
             radius: '50%',
             data: [
-                {value: total.male.value, name: '男'},
-                {value: total.female.value, name: '女'}
+                {value: total.userInfo.male.value, name: '男'},
+                {value: total.userInfo.female.value, name: '女'}
             ],
             emphasis: {
                 itemStyle: {
@@ -92,3 +91,40 @@ option2 = {
 };
 
 option2 && myChart2.setOption(option2);
+
+//用户性别图表
+var chartDom3 = document.getElementById('levelChart');
+var myChart3 = echarts.init(chartDom3, 'dark');
+var option3;
+
+option3 = {
+    title: {
+        text: '网易云音乐',
+        subtext: '用户等级分布',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+    },
+    series: [
+        {
+            name: '用户等级',
+            type: 'pie',
+            radius: '50%',
+            data: total.levelInfo,
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+option3 && myChart3.setOption(option3);

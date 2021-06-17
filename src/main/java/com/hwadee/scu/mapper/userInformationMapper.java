@@ -1,9 +1,11 @@
 package com.hwadee.scu.mapper;
 
+import com.hwadee.scu.common.domain.entity.UserLevel;
 import com.hwadee.scu.common.domain.userInformation;
 import com.hwadee.scu.common.domain.userInformationExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface userInformationMapper {
     /**
@@ -93,4 +95,7 @@ public interface userInformationMapper {
      * @mbg.generated Tue Jun 15 11:22:48 CST 2021
      */
     int updateByPrimaryKey(userInformation record);
+
+    @Select("select level ,count(level) as number from user_information group by level")
+    List<UserLevel> getAllUserLevel();
 }

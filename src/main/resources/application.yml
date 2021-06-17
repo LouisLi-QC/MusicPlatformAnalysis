@@ -6,9 +6,9 @@ mybatis:
 
 spring:
   datasource:
-     url: jdbc:mysql://localhost:3306/musicplatform?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
+     url: jdbc:mysql://localhost:3306/scu_project?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
      username: root
-     password: root
+     password: 991116ta
      driver-class-name: com.mysql.jdbc.Driver
   devtools:
     restart:
