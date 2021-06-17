@@ -2,43 +2,22 @@ package com.hwadee.scu.common.domain.entity;
 
 public class Singer {
 
-    private String rank;
-    private String name;
-    private String times;
+    private String author;
+    private Integer times;
 
-    public Singer() {
+    public String getAuthor() {
+        return author;
     }
 
-    public String getRank() {
-        return rank;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTimes() {
+    public Integer getTimes() {
         return times;
     }
 
-    public void setTimes(String times) {
+    public void setTimes(Integer times) {
         this.times = times;
-    }
-
-    @Override
-    public String toString() {
-        return "Singer{" +
-                "rank='" + rank + '\'' +
-                ", name='" + name + '\'' +
-                ", times='" + times + '\'' +
-                '}';
     }
 }
