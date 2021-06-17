@@ -36,6 +36,9 @@ public class CommentsServiceImpl implements CommentsService {
         for(int i=0;i<24;i++){
             Time startTime = new Time(i,0,0);
             Time endTime = new Time(i+1,0,0);
+            if(i==23){
+                endTime=new Time(23,59,59);
+            }
             CdCommentsExample.Criteria CdCommentsExample_criteria=cdCommentsExample.createCriteria();
             CdCommentsExample_criteria.andTimeBetween(startTime,endTime);
             cdCounts[i]=cdCommentsMapper.countByExample(cdCommentsExample);
@@ -49,6 +52,9 @@ public class CommentsServiceImpl implements CommentsService {
         for(int i=0;i<24;i++){
             Time startTime = new Time(i,0,0);
             Time endTime = new Time(i+1,0,0);
+            if(i==23){
+                endTime=new Time(23,59,59);
+            }
             GdsnaqgsCommentsExample.Criteria gdsnaqgsCommentsExample_criteria=gdsnaqgsCommentsExample.createCriteria();
             gdsnaqgsCommentsExample_criteria.andTimeBetween(startTime,endTime);
             gdsnaqgsCounts[i]=gdsnaqgsCommentsMapper.countByExample(gdsnaqgsCommentsExample);
@@ -62,6 +68,9 @@ public class CommentsServiceImpl implements CommentsService {
         for(int i=0;i<24;i++){
             Time startTime = new Time(i,0,0);
             Time endTime = new Time(i+1,0,0);
+            if(i==23){
+                endTime=new Time(23,59,59);
+            }
             QflCommentsExample.Criteria qflCommentsExample_criteria=qflCommentsExample.createCriteria();
             qflCommentsExample_criteria.andTimeBetween(startTime,endTime);
             qflCounts[i]=qflCommentsMapper.countByExample(qflCommentsExample);
@@ -75,6 +84,9 @@ public class CommentsServiceImpl implements CommentsService {
         for(int i=0;i<24;i++){
             Time startTime = new Time(i,0,0);
             Time endTime = new Time(i+1,0,0);
+            if(i==23){
+                endTime=new Time(23,59,59);
+            }
             XwzydrCommentsExample.Criteria xwzydrCommentsExample_criteria=xwzydrCommentsExample.createCriteria();
             xwzydrCommentsExample_criteria.andTimeBetween(startTime,endTime);
             xwzydrCounts[i]=xwzydrCommentsMapper.countByExample(xwzydrCommentsExample);
