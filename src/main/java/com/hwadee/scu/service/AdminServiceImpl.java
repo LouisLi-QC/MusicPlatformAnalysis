@@ -51,7 +51,7 @@ public class AdminServiceImpl implements AdminService {
         if(admins.isEmpty()){//如果admins为空，说明数据库中没有该账号，直接返回失败
             return false;
         }
-        return admins.get(0).getEmail().equals(password)?true:false;//比较密码是否相同
+        return admins.get(0).getPassword().equals(password)?true:false;//比较密码是否相同
     }
 
     /**

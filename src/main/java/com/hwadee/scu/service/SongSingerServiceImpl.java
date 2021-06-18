@@ -18,7 +18,6 @@ public class SongSingerServiceImpl implements SongSingerService {
 
     @Override
     public String getSongSinger() {
-
         //歌曲
         List<Song> songData = musicListMapper.getSong();
         List<String> songName = new ArrayList<>();

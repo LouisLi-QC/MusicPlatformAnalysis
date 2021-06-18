@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="css/all.css"/>
-    <script src="js/my.js"></script>
+    <!--<script src="js/my.js"></script>-->
 	<script src="js/vue.js"></script>
 	<script src="js/axios.min.js"></script>
     <script>
@@ -36,7 +36,8 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
     			<!--表单项-->
     			<div class="box default">
     				<label for="userName">用&nbsp;户&nbsp;名 </label>
-    				<input v-model="Email" type="text" id="userName" placeholder="请输入您的账户或登录名" />
+    				<input v-model="Email" type="text" id="userName" placeholder="请输入您的账户或登录名" @blur="checkEmail" @input="checkEmail"/>
+					<label v-if="flagName" style="margin-bottom: 3px;color: green">邮箱不正确</label>
     				<i></i>
     			</div>
     			<!--提示信息-->
@@ -68,7 +69,8 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 			el:"#login",
 			data:{
 				Email:"",
-				password:""
+				password:"",
+				flagName:false,//邮箱号码是否正确，
 			},
 			methods:{
 				login:function () {
@@ -81,16 +83,31 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 						}
 					}).then(
 							function (response) {
-								console.log("登陆成功" + response.data)
-								console.log( response)
-								console.log( response.data)
+								console.log(response)
+								if(response.data.err_code==200){
+									window.location.href='/EnterToAdmin'
+								}
+								else
+								{
+									alert(response.data.message)
+								}
 
 							},
 							function (err) {
 								console.log("失败" + err)
 							}
 					)
-				}
+				},
+				checkEmail:function() {//正则检验手机号是否正确
+					const reg = /^1([38]\d|5[0-35-9]|7[3678])\d{8}$/;
+					const reg2=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+					if (this.Email == '' || !reg2.test(this.Email)) {
+						this.flagName=true
+					}
+					else{
+						this.flagName=false
+					}
+				},
 			}
 		})
 	</script>

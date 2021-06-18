@@ -9,6 +9,7 @@ import com.hwadee.scu.common.util.StringRedisUtils;
 import com.hwadee.scu.service.EmailService;
 import com.hwadee.scu.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -87,12 +91,17 @@ public class AdminController {
      * create time:
      */
     @RequestMapping("/login")
-    public Response login(String Email,String password){
-        System.out.println(Email);
-        System.out.println(password);
-        String pwd=md5.getMD5(password);//加密后的密码
+    public Response login(String Email, String password, HttpServletRequest request, HttpServletResponse response){
+        //加密后的密码
+        String pwd=md5.getMD5(password);
+        //把邮箱加密之后作为sessionId传给cookie，下次访问将会携带这个cookie
+        Cookie cookie=new Cookie("SessionId",md5.getMD5(Email));
+        //将cookie返回给客户浏览器
+        response.addCookie(cookie);
+        Session session=new Session();
+        System.out.println("登陆加密后的密码:"+pwd);
         boolean loginFlag=adminService.login(Email,pwd);
-        return loginFlag?new Response(true,200,"登陆成功"):new Response(false,411,"密码错误");
+        return loginFlag?new Response(true,200,"登陆成功"):new Response(false,411,"账号密码错误");
     }
     /**
      * create by: fanyang

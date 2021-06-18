@@ -22,6 +22,7 @@ public class PlaylistController {
     @RequestMapping("/playLists")
     @ResponseBody
     public String PlayLists(){
+        System.out.println("开始");
         HashMap<String, Object> res = new HashMap<>();
         //播放量前十
         List<PlaylistNumber> numberData = playlistService.selectPlayNumber(); //数据库取出数据
@@ -35,7 +36,7 @@ public class PlaylistController {
         HashMap<String, Object> numberRes = new HashMap<>();
         numberRes.put("listName",nameList1);
         numberRes.put("playNumber",numberList1);
-
+        System.out.println("中间");
 
         //歌曲数前十
         List<PlayList> songData = playlistService.selectListSong(); //数据库取出数据
@@ -54,6 +55,7 @@ public class PlaylistController {
         res.put("songNumber",songRes);
         //转为json
         String s = JSON.toJSONString(res);
+        System.out.println("结束");
         return s;
     }
 }
