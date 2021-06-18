@@ -37,7 +37,7 @@ public class DataController {
         List<List<Comment>> commentList=dataService.getComment();
         Map<String,Object> map=new HashMap<>();
         String[] unNames=new String[]{"chengDu","guangDong","qiFengLe","peopleLikeME"};//四首歌的英文名
-        String[] cnNames=new String[]{"成都","广东十年爱情故事","起风了","像我这样优秀的人"};//四首歌的中文名
+        String[] cnNames=new String[]{"成都","广东十年爱情故事","起风了","像我这样的人"};//四首歌的中文名
         for(int i=0;i<commentList.size();i++){
             LinkedList<String> listTmp=new LinkedList<>();
             for(int j=0;j<commentList.get(i).size();j++){
