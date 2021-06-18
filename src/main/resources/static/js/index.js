@@ -25,6 +25,15 @@ option1 = {
     tooltip: {
         trigger: 'item'
     },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
     legend: {
         orient: 'vertical',
         left: 'left',
@@ -66,6 +75,15 @@ option2 = {
     tooltip: {
         trigger: 'item'
     },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
     legend: {
         orient: 'vertical',
         left: 'left',
@@ -91,6 +109,61 @@ option2 = {
 };
 
 option2 && myChart2.setOption(option2);
+
+var chartDom3 = document.getElementById('levelChart');
+var myChart3 = echarts.init(chartDom3, 'dark');
+var option3;
+
+option3 = {
+    tooltip: {
+        trigger: 'item'
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        top: '5%',
+        left: 'center'
+    },
+    series: [
+        {
+            name: '用户等级',
+            type: 'pie',
+            radius: ['40%', '70%'],
+            avoidLabelOverlap: false,
+            itemStyle: {
+                borderRadius: 10,
+                borderColor: '#fff',
+                borderWidth: 2
+            },
+            label: {
+                show: false,
+                position: 'center'
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: '40',
+                    fontWeight: 'bold'
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: total.levelInfo
+        }
+    ]
+};
+
+option3 && myChart3.setOption(option3);
+
+
 
 
 var total = {};

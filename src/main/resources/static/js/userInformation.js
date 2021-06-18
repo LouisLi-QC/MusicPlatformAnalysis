@@ -25,6 +25,15 @@ option1 = {
     tooltip: {
         trigger: 'item'
     },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
     legend: {
         orient: 'vertical',
         left: 'left',
@@ -66,6 +75,15 @@ option2 = {
     tooltip: {
         trigger: 'item'
     },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
     legend: {
         orient: 'vertical',
         left: 'left',
@@ -93,38 +111,91 @@ option2 = {
 option2 && myChart2.setOption(option2);
 
 //用户性别图表
-var chartDom3 = document.getElementById('levelChart');
-var myChart3 = echarts.init(chartDom3, 'dark');
-var option3;
+// var chartDom3 = document.getElementById('levelChart');
+// var myChart3 = echarts.init(chartDom3, 'dark');
+// var option3;
+//
+// option3 = {
+//     title: {
+//         text: '网易云音乐',
+//         subtext: '用户等级分布',
+//         left: 'center'
+//     },
+//     tooltip: {
+//         trigger: 'item'
+//     },
+//     legend: {
+//         orient: 'vertical',
+//         left: 'left',
+//     },
+//     series: [
+//         {
+//             name: '用户等级',
+//             type: 'pie',
+//             radius: '50%',
+//             data: total.levelInfo,
+//             emphasis: {
+//                 itemStyle: {
+//                     shadowBlur: 10,
+//                     shadowOffsetX: 0,
+//                     shadowColor: 'rgba(0, 0, 0, 0.5)'
+//                 }
+//             }
+//         }
+//     ]
+// };
+//
+// option3 && myChart3.setOption(option3);
 
-option3 = {
-    title: {
-        text: '网易云音乐',
-        subtext: '用户等级分布',
-        left: 'center'
-    },
+var chartDom = document.getElementById('levelChart');
+var myChart = echarts.init(chartDom, 'dark');
+var option;
+
+option = {
     tooltip: {
         trigger: 'item'
     },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
     legend: {
-        orient: 'vertical',
-        left: 'left',
+        top: '5%',
+        left: 'center'
     },
     series: [
         {
             name: '用户等级',
             type: 'pie',
-            radius: '50%',
-            data: total.levelInfo,
+            radius: ['40%', '70%'],
+            avoidLabelOverlap: false,
+            itemStyle: {
+                borderRadius: 10,
+                borderColor: '#fff',
+                borderWidth: 2
+            },
+            label: {
+                show: false,
+                position: 'center'
+            },
             emphasis: {
-                itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                label: {
+                    show: true,
+                    fontSize: '40',
+                    fontWeight: 'bold'
                 }
-            }
+            },
+            labelLine: {
+                show: false
+            },
+            data: total.levelInfo
         }
     ]
 };
 
-option3 && myChart3.setOption(option3);
+option && myChart.setOption(option);
