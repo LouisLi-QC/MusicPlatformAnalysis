@@ -208,7 +208,7 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 
 					if(that.Email=="")
 					{
-						alert("请输入手机号后再发送验证码")
+						alert("请输入邮箱后再发送验证码")
 					}
 					else
 					{
@@ -240,7 +240,18 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 					console.log(that.Email)
 					console.log(that.password)
 					console.log(that.user_code)
-
+					if(that.Email==""||that.repeat==""||that.confirmPassword==""||that.user_code==""){
+						alert("请输入完整的信息后再注册")
+						return ;
+					}
+					if(!that.flagName){
+						alert("请输入正确的邮箱")
+						return ;
+					}
+					if(!that.flagPwd){
+						alert("请检查密码是否一致")
+						return ;
+					}
 					axios.get("/admin/register", {
 						params: {
 							Email: that.Email,

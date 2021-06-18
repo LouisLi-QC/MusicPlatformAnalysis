@@ -585,10 +585,13 @@
                 selectPlayNumber:"",//待修改的老的歌单播放量
 
                 newListName:"",//待修改新的的歌单名
-                newPlayNumber:""//待修改的新的歌单播放量
+                newPlayNumber:"",//待修改的新的歌单播放量
+                reg:"/^\+?[1-9][0-9]*$/",
 
 
-            },
+
+
+        },
             filters: {//对UTC时间进行过滤
                 ellipsis: function (value) {
                     if (!value) return ''
@@ -601,6 +604,17 @@
             methods: {
                 addPlayList: function () {//添加评论
                     var that = this
+                    const reg = /^\+?[1-9][0-9]*$/;
+                    if(that.listName==""||that.playNumber==""){
+                        console.log("请输入完整的信息")
+                        alert("请输入完整的信息")
+                        return ;
+                    }
+                    else if(!reg.test(that.playNumber)){
+                        alert("请输入正整数")
+                        return ;
+                    }
+
                     axios.get("/admin/addPlayList", {
                       params: {
                           listName:that.listName,
@@ -640,6 +654,16 @@
                 changePlayList:function(){
                     var that=this
                     console.log("修改选中的id"+that.selectId)
+                    const reg = /^\+?[1-9][0-9]*$/;
+                    if(that.newListName==""||that.newPlayNumber==""){
+                        console.log("请输入完整的信息")
+                        alert("请输入完整的信息")
+                        return ;
+                    }
+                    else if(!reg.test(that.newPlayNumber)){
+                        alert("请输入正整数")
+                        return ;
+                    }
                     axios.get("/admin/changePlayList", {
                         params: {
                             id:that.selectId,

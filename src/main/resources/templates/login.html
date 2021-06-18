@@ -76,6 +76,10 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 				login:function () {
 					var that=this;
 					console.log("登陆前")
+					if(that.Email==""||that.password==""){
+						alert("请输入完整的账号密码后再登陆")
+						return ;
+					}
 					axios.get("/admin/login", {
 						params: {
 							Email: that.Email,

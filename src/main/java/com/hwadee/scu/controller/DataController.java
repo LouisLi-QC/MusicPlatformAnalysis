@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @program: musicPlatform
@@ -39,17 +36,17 @@ public class DataController {
     public String getComment(){
         List<List<Comment>> commentList=dataService.getComment();
         Map<String,Object> map=new HashMap<>();
-        String[] names=new String[]{"chengDu","guangDong","qiFengLe","peopleLikeME"};//四首歌的名字
+        String[] unNames=new String[]{"chengDu","guangDong","qiFengLe","peopleLikeME"};//四首歌的英文名
+        String[] cnNames=new String[]{"成都","广东十年爱情故事","起风了","像我这样优秀的人"};//四首歌的中文名
         for(int i=0;i<commentList.size();i++){
-            int[] tmp=new int[24];
+            LinkedList<String> listTmp=new LinkedList<>();
             for(int j=0;j<commentList.get(i).size();j++){
-                tmp[j]=commentList.get(i).get((j+1)%24).getCount();//从凌晨一点开始赋值
+                listTmp.add(String.valueOf(commentList.get(i).get((j+1)%24).getCount()));//从凌晨一点开始赋值
             }
-            map.put(names[i],tmp);
+            listTmp.addFirst(cnNames[i]);
+            map.put(unNames[i],listTmp);
         }
-        JSONObject json = new JSONObject(map);
-        String res=json.toString();
-        return res;
+        return JSON.toJSONString(map);
     }
     /**
      * create by: fanyang

@@ -73,7 +73,7 @@ public class AdminController {
         String realCode=stringRedisUtils.get(Email);//从redis中读取验证码
         //如果用户输入的验证码和系统生成的验证码一致，则成功注册
         if(realCode==null){
-            return new Response(false,410,"验证码已过期");
+            return new Response(false,410,"还未获取到验证码");
         }
         if(realCode.equals(userCode)){
             boolean flag=adminService.register(Email,pwd);
