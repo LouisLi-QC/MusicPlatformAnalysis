@@ -38,7 +38,7 @@ var option = {
 
     series: [
         {
-            name:'漏斗图',
+            name:'歌曲信息',
             type:'funnel',
             left: '10%',
             top: 60,
