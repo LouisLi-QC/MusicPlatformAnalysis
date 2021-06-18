@@ -95,6 +95,6 @@ public interface QflComNumMapper {
      */
     int updateByPrimaryKey(QflComNum record);
 
-    @Select("select *from qfi_com_num")
+    @Select("select *from qfl_com_num")
     List<QflComNum> findAllQfl();
 }

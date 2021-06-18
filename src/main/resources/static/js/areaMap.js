@@ -56,7 +56,7 @@ var option = {
             var info = '<p style="font-size:18px">' + params.name + params.value +'</p><p style="font-size:14px"> </p>'
             return info;
         },
-        backgroundColor: "rgba(255,219,67,0.93)",//提示标签背景颜色
+        backgroundColor: "rgba(249,255,239,0.93)",//提示标签背景颜色
         textStyle: { color: "#ff4130" } //提示标签字体颜色
     },
 //左侧小导航图标
@@ -65,9 +65,9 @@ var option = {
         x: 'left',
         y: 'center',
         splitList: [
-            {start:551, end: 1600},{start: 401, end: 550},
-            {start: 301, end: 400},{start: 201, end: 300},
-            {start: 101, end: 200},{start: 0, end:100},
+            {start:3001, end: 5000},{start: 2001, end: 3000},
+            {start: 1001, end: 2000},{start: 601, end: 1000},
+            {start: 201, end: 600},{start: 0, end:200},
         ],
         color: ['#f50708', '#ea7006', '#ecef09','#0a3ae2', '#09d2e6', '#78ea10']
     },
