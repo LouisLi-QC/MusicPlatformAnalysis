@@ -70,6 +70,10 @@ public class AdminController {
     @RequestMapping("/register")
     public Response register(String Email, String password, String userCode){
         String pwd=md5.getMD5(password);//加密后的密码
+        boolean existFlag=adminService.isExist(Email);
+        if(adminService.isExist(Email)){
+            return new Response(false,412,"用户已注册，请直接登陆");
+        }
         String realCode=stringRedisUtils.get(Email);//从redis中读取验证码
         //如果用户输入的验证码和系统生成的验证码一致，则成功注册
         if(realCode==null){

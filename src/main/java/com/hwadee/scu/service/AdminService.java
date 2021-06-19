@@ -19,6 +19,8 @@ public interface AdminService {
 
     boolean login(String Email,String password);//验证邮箱和密码，验证是否登陆成功
 
+    boolean isExist(String Email);//验证用户是否已注册
+
     List<CdComments> getAllComments();//获得所有的成都的用户评论
 
     boolean addComment(String user,String vip,String content);//添加评论

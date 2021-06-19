@@ -56,6 +56,22 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * create by: fanyang
+     * description: 检查用户是否已注册
+     * params:Email,用户邮箱
+     * return:返回是否已注册，已注册为true，未注册为false
+     * create time:
+     */
+    @Override
+    public boolean isExist(String Email) {
+        AdminExample adminExample=new AdminExample();
+        AdminExample.Criteria criteria=adminExample.createCriteria();
+        criteria.andEmailEqualTo(Email);
+        long count=adminMapper.countByExample(adminExample);//count大于等于1则已注册，禁止再次注册
+        return count>=1?true:false;
+    }
+
+    /**
+     * create by: fanyang
      * description: 获取所有成都的评论的信息，进行增删改查
      * params:无需参数
      * return:返回所有评论的信息
