@@ -210,6 +210,10 @@ style="background-repeat:no-repeat;background-size:100% 100%;background-attachme
 					{
 						alert("请输入邮箱后再发送验证码")
 					}
+					else if(that.flagName){
+						alert("请输入正确的邮箱后再发送验证码")
+						return ;
+					}
 					else
 					{
 						that.show=false
